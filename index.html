@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cam's Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --plum: #2d1b3d;
+      --lavender: #a98fb8;
+      --cream: #f5f3ed;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+      background: var(--cream);
+      color: var(--plum);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    
+    header {
+      margin-bottom: 4rem;
+      text-align: center;
+    }
+    
+    h1 {
+      font-family: "DM Serif Display", serif;
+      font-size: 3rem;
+      color: var(--plum);
+      margin-bottom: 1rem;
+    }
+    
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--lavender);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .case-studies {
+      display: grid;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .case-study-card {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      text-decoration: none;
+      color: var(--plum);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    .case-study-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    
+    .case-study-card h2 {
+      font-family: "DM Serif Display", serif;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: var(--plum);
+    }
+    
+    .case-study-card .meta {
+      font-size: 0.9rem;
+      color: var(--lavender);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+    
+    .case-study-card p {
+      color: var(--plum);
+      line-height: 1.7;
+    }
+    
+    .arrow {
+      display: inline-block;
+      margin-left: 0.5rem;
+      transition: margin-left 0.2s ease;
+    }
+    
+    .case-study-card:hover .arrow {
+      margin-left: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Cam's Portfolio</h1>
+      <p class="subtitle">Senior Experience Designer focused on accessible, data-driven design and strategic product thinking</p>
+    </header>
+    
+    <div class="case-studies">
+      <a href="designing-with-ai.html" class="case-study-card">
+        <div class="meta">AI-Assisted Design Process</div>
+        <h2>Designing with AI</h2>
+        <p>Building a brand system for an interior design platform through collaborative AI workflows. Documenting how Claude augmented research synthesis, concept generation, and rapid prototyping.<span class="arrow">→</span></p>
+      </a>
+      
+      <a href="research-and-design.html" class="case-study-card">
+        <div class="meta">Enterprise UX</div>
+        <h2>Research & Design</h2>
+        <p>Leading end-to-end UX design for enterprise data tools, from user research through implementation.<span class="arrow">→</span></p>
+      </a>
+      
+      <a href="design-strategy.html" class="case-study-card">
+        <div class="meta">Strategic Design</div>
+        <h2>Design Strategy</h2>
+        <p>Strategic design initiatives and product thinking at the intersection of business goals and user needs.<span class="arrow">→</span></p>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

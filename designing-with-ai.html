@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Designing with AI — Cameron Womack</title>
+<style>
+:root {
+  --plum: #2E1A30;
+  --lavender: #9B7FA0;
+  --petal: #E8D8D2;
+  --cream: #F4E9E0;
+  --ivory: #F6F1EA;
+  --accent: #C8A8CD;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: var(--ivory);
+  color: var(--plum);
+  line-height: 1.65;
+}
+
+/* ── Nav (same as other case studies) ──────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1.4rem 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(246,241,234,0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--petal);
+}
+
+nav a {
+  color: var(--plum);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+nav a:hover { color: var(--lavender); }
+
+.nav-left { display: flex; align-items: center; gap: 2rem; }
+.nav-right { display: flex; gap: 2rem; align-items: center; }
+
+/* ── Journal Container ─────────────────────────────────────────────── */
+.journal-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 8rem 2rem 8rem; /* Added bottom padding for sticky nav */
+}
+
+/* ── Case Study Header ─────────────────────────────────────────────── */
+.cs-header {
+  margin-bottom: 4rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--petal);
+}
+
+.cs-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--lavender);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.cs-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--plum);
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+.cs-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.meta-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--lavender);
+  font-weight: 600;
+}
+
+.meta-value {
+  font-size: 1rem;
+  color: var(--plum);
+  font-weight: 400;
+}
+
+.cs-tldr {
+  margin-top: 2.5rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(155,127,160,0.08), rgba(232,216,210,0.12));
+  border-left: 3px solid var(--lavender);
+  border-radius: 4px;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--plum);
+}
+
+/* ── Journal Entry Navigation ──────────────────────────────────────── */
+.entry-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3rem 0;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--petal);
+  border-bottom: 1px solid var(--petal);
+}
+
+.entry-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--cream);
+  border: 1px solid var(--petal);
+  border-radius: 6px;
+  color: var(--plum);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.entry-nav-btn:hover {
+  background: var(--petal);
+  transform: translateY(-1px);
+}
+
+.entry-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.entry-nav-btn:disabled:hover {
+  background: var(--cream);
+  transform: none;
+}
+
+.entry-counter {
+  font-size: 0.85rem;
+  color: var(--lavender);
+  font-weight: 500;
+}
+
+/* ── Section Headers ───────────────────────────────────────────────── */
+.section-header {
+  margin: 5rem 0 3rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--lavender);
+}
+
+.section-header h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--lavender);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ── Cover Page & Journal Entry ────────────────────────────────────── */
+#coverPage {
+  display: none;
+}
+
+#coverPage.active {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+/* ── Journal Entry ─────────────────────────────────────────────────── */
+.journal-entry {
+  display: none;
+  margin-bottom: 4rem;
+}
+
+.journal-entry.active {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.entry-date {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--lavender);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.entry-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--plum);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.entry-content {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--plum);
+}
+
+.entry-content p {
+  margin-bottom: 1.5rem;
+}
+
+.entry-content h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  color: var(--plum);
+}
+
+.entry-content ul, .entry-content ol {
+  margin: 1.5rem 0 1.5rem 1.5rem;
+}
+
+.entry-content li {
+  margin-bottom: 0.75rem;
+}
+
+.entry-content code {
+  background: var(--cream);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+  font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
+}
+
+.entry-content pre {
+  background: var(--cream);
+  padding: 1.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--petal);
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.entry-content pre code {
+  background: none;
+  padding: 0;
+}
+
+.entry-img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--petal);
+  margin: 2rem 0;
+}
+
+.img-caption {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--lavender);
+  text-align: center;
+  margin-top: 0.75rem;
+}
+
+/* ── Bottom Sticky Navigation ──────────────────────────────────────── */
+.entry-nav-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 3.5rem;
+  background: rgba(246,241,234,0.98);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid var(--petal);
+  box-shadow: 0 -4px 24px rgba(46,26,48,0.06);
+}
+
+/* Hide nav on cover page */
+#coverPage.active ~ .entry-nav-bottom {
+  display: none;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  nav {
+    padding: 1rem 1.5rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .nav-left, .nav-right {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .journal-container {
+    padding: 6rem 1.5rem 3rem;
+  }
+  
+  .cs-title {
+    font-size: 2.5rem;
+  }
+  
+  .entry-title {
+    font-size: 1.5rem;
+  }
+  
+  .entry-nav-bottom {
+    padding: 1rem 1.5rem;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <a href="index.html">← All work</a>
+  </div>
+  <div class="nav-right">
+    <a href="about.html">About</a>
+    <a href="resume.pdf">Resume ↗</a>
+  </div>
+</nav>
+
+<div class="journal-container">
+  
+  <!-- Cover Page / Entries Toggle -->
+  <div id="coverPage" class="active" data-index="-1">
+    <div class="cs-header">
+      <p class="cs-label">Case study</p>
+      <h1 class="cs-title">Designing with AI</h1>
+      
+      <div class="cs-meta">
+        <div class="meta-item">
+          <span class="meta-label">Role</span>
+          <span class="meta-value">Design Collaborator</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Project</span>
+          <span class="meta-value">Alterna Brand System</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Timeline</span>
+          <span class="meta-value">March 2026 – Ongoing</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Collaborator</span>
+          <span class="meta-value">Claude (Anthropic)</span>
+        </div>
+      </div>
+      
+      <div class="cs-tldr">
+        To help a friend evolve her brand's online presence, I'm <span style="color:var(--lavender);font-weight:600;">exploring how AI tools like Claude can augment the product design process</span> (accelerating research, shaping product concepts, and supporting early design exploration) while documenting the workflow in real time.
+      </div>
+      
+      <div style="text-align:center;margin-top:3rem;">
+        <button onclick="navigateEntry(1)" style="padding:1rem 2.5rem;background:var(--lavender);color:white;border:none;border-radius:6px;font-size:1rem;font-weight:600;cursor:pointer;transition:all 0.2s;">
+          Begin Reading →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Entries Container -->
+  <div id="entriesContainer"></div>
+
+</div>
+
+<!-- Bottom Sticky Navigation -->
+<div class="entry-nav-bottom">
+  <button class="entry-nav-btn" id="prevBtnBottom" onclick="navigateEntry(-1)">
+    ← Previous
+  </button>
+  <span class="entry-counter">
+    <span id="currentEntryBottom">1</span> of <span id="totalEntriesBottom">0</span>
+  </span>
+  <button class="entry-nav-btn" id="nextBtnBottom" onclick="navigateEntry(1)">
+    Next →
+  </button>
+</div>
+
+<script>
+// Entry data structure
+const entries = [
+  {
+    section: "What I Did",
+    number: "1",
+    title: "Project Snapshot",
+    content: `
+      <h3>Role</h3>
+      <p>I'm leading the design exploration for this project while experimenting with AI-assisted workflows. Acting as both product designer and researcher, I'm using tools like Claude and Figma Make to synthesize research, define product concepts, and support early interface exploration.</p>
+      
+      <h3>Problem</h3>
+      <p>Alterna is an AI-assisted interior design tool, created by two Harvard Business School students. One of the founders is a college friend, and she's reached out to me for some help with improving her brand's online presence. She and her co-founder feel like their current website didn't clearly communicate the brand's identity, or easily enable discovery for users.</p>
+      
+      <p>At the same time, as a senior designer I'm interested in exploring how emerging AI tools are capable of supporting and enhancing the different stages of the product design workflow. This project allows me to achieve two goals: helping a friend evolving her brand's web experience, while experimenting with how AI can augment my design workflow.</p>
+      
+      <h3>Outcome</h3>
+      <p>This project is an ongoing design experiment. As I make progress, I will be documenting how AI tools like Claude have supported my research synthesis, product definition, and early interface exploration while developing a concept redesign for Alterna's website.</p>
+      
+      <h3>Impact</h3>
+      <ul>
+        <li>Developing a concept redesign that better communicates Alterna's visual identity</li>
+        <li>Prototyping new ways to structure inspiration and discovery on the site</li>
+        <li>Establishing an AI-assisted workflow for research synthesis and product framing</li>
+        <li>Documenting how AI tools can accelerate early stages of the design process</li>
+      </ul>
+      
+      <video 
+        controls 
+        preload="metadata" 
+        playsinline 
+        style="width:100%;max-width:800px;display:block;margin:2.5rem auto 0;border-radius:8px;border:1px solid var(--petal);background:#000;">
+        <source src="alterna_recording.mp4" type="video/mp4">
+        <source src="alterna_recording.mov" type="video/quicktime">
+        <p style="color:var(--lavender);text-align:center;padding:2rem;">Your browser does not support video playback.</p>
+      </video>
+      <p style="text-align:center;font-style:italic;color:var(--lavender);margin-top:0.5rem;">The existing online experience (as of March 5, 2026)</p>
+    `
+  },
+  {
+    section: "What I Did",
+    number: "2",
+    title: "Defining the Design Challenge",
+    content: `
+      <h3>Initial Meeting</h3>
+      <p>To kick off the project, I met with my friend — a co-founder of Alterna — to understand her goals for the brand and the challenges she was facing with the current website. She shared that she and her co-founder wanted the site to better reflect the brand's visual identity while making it easier for visitors to explore her work and understand the services she offers.</p>
+      
+      <p>During this conversation, we discussed:</p>
+      <ul>
+        <li>the ideal look and feel of the brand</li>
+        <li>the current end to end flow for Alterna customers</li>
+        <li>what feels missing from the existing website</li>
+        <li>references and visual materials that capture the brand's aesthetic</li>
+      </ul>
+      
+      <h3>Shared Materials</h3>
+      <p>After our conversation, she shared several materials to help ground the project:</p>
+      <ul>
+        <li>visual inspiration (mood boards, reference images, natural language explanations of the desired "vibe")</li>
+        <li>the current Alterna website</li>
+        <li>documentation from the Alterna team outlining marketing strategies, pitch decks, and brand assets</li>
+      </ul>
+      
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:1rem;margin:2rem 0 0;">
+        <div style="grid-row:span 2;">
+          <img src="inspiration_pics_text.png" alt="Visual inspiration with magazine references" style="width:100%;height:100%;object-fit:cover;border-radius:8px;border:1px solid var(--petal);">
+        </div>
+        <div>
+          <img src="alterna_brand_kit_slides.png" alt="Alterna brand kit slides" style="width:100%;height:100%;object-fit:cover;border-radius:8px;border:1px solid var(--petal);">
+        </div>
+        <div>
+          <img src="alterna_branding_doc.png" alt="Alterna branding documentation" style="width:100%;height:100%;object-fit:cover;border-radius:8px;border:1px solid var(--petal);">
+        </div>
+      </div>
+      <p style="text-align:center;font-style:italic;color:var(--lavender);margin-top:0.5rem;">Shared reference materials</p>
+      
+      <p style="margin-top:2rem;">These inputs formed the starting point for both the design exploration and the AI-assisted workflow.</p>
+      
+      <div style="margin-top:4rem;padding-top:2rem;border-top:2px solid var(--lavender);">
+        <h2 style="font-size:1.8rem;font-weight:600;color:var(--lavender);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:1.5rem;">Next Steps</h2>
+        <p>The materials suggest that the brand values curated, personality-driven discovery over traditional category browsing. To validate this direction and translate it into design principles, I'll use Claude to synthesize patterns across the visual references, brand documentation, and existing site. The key question is: <strong>what recurring aesthetic, functional, or experiential signals appear across these materials that could inform how users interact with Alterna?</strong></p>
+      </div>
+    `
+  },
+  {
+    section: "What I Did",
+    number: "3",
+    title: "Synthesizing Brand Patterns",
+    content: `
+      <h3>Establishing The Project Context</h3>
+      <p>As mentioned in the previous entry, my first step with using Claude in my workflow was to set up the Alterna project in the tool. Setting up the project context ensures that the outputs from Claude are informed by all of the materials I received in the kick off meeting. In the project instructions, <span style="color:var(--lavender);">I position Claude as a research and synthesis assistant</span>. It was important for me to instruct Claude to consider me the ultimate decision maker, so that I can ensure as much as possible that the design judgment and decision-making stays firmly in my hands.</p>
+      
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0 0;">
+        <div>
+          <img src="project_instruction.png" alt="Claude project instructions setup" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--petal);">
+        </div>
+        <div>
+          <img src="project_space.png" alt="Claude project workspace" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--petal);">
+        </div>
+      </div>
+      <p style="text-align:center;font-style:italic;color:var(--lavender);margin-top:0.5rem;">Setting up the Claude project</p>
+      
+      <h3 style="margin-top:2rem;">Synthesize the Inputs</h3>
+      <p>With the project context established, I wanted to orient Claude to the project by prompting it to identify patterns across the project materials I shared. For this step, I asked Claude to help analyze the inspiration, brand notes, and existing website to surface recurring themes and potential directions for the experience.</p>
+      
+      <p><strong>My Prompt:</strong></p>
+      <pre><code>Using the project description and all materials in this project as context, help synthesize the visual and brand references.
+
+Analyze the references, inspiration materials, and brand notes to identify patterns in:
+• visual aesthetic
+• layout and storytelling style
+• emotional tone
+• types of imagery and composition
+• how discovery and browsing seem to work
+
+Structure your response in four sections:
+
+1. Key Themes
+What recurring aesthetic, stylistic, or brand signals appear across the materials?
+
+2. Evidence
+For each theme, explain what patterns in the materials suggest it.
+
+3. Design Implications
+What do these themes imply for the experience of a redesigned Alterna website?
+
+4. Experience Opportunities
+Based on these patterns, what types of interactions, features, or discovery models might support the brand direction?
+
+Focus on synthesis and interpretation rather than generic design advice.
+The goal is to help translate the inspiration and brand materials into clearer experience design direction.</code></pre>
+      
+      <h3>Claude Output</h3>
+      <p>Claude identified several recurring patterns across the references and brand materials:</p>
+      <ul>
+        <li>editorial storytelling and magazine-inspired layouts</li>
+        <li>bold color and visual contrast</li>
+        <li>focus on a personality-first/"you"-first experience</li>
+        <li>curated discovery rather than traditional navigation structures</li>
+      </ul>
+      
+      <p>These themes suggested that the experience should emphasize personalized exploration and visual storytelling rather than a typical catalog-style browsing model.</p>
+      
+      <h3>Design Interpretation</h3>
+      <p>I was encouraged by the output of this first prompt, as Claude's synthesis articulated patterns that aligned closely with the ideas and references the founder shared in our initial meeting. One theme that stood out was the emphasis on taste, identity, and lived-in spaces — rather than organizing the experience around furniture categories or room types. This echoes the founder's idea that the site should feel closer to a curated editorial experience than a traditional furniture marketplace. Seeing that direction reflected in the synthesis gave me confidence that Claude could help structure the inspiration and brand inputs into clearer experience design principles for the Alterna website.</p>
+      
+      <div style="margin-top:4rem;padding-top:2rem;border-top:2px solid var(--lavender);">
+        <h2 style="font-size:1.8rem;font-weight:600;color:var(--lavender);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:1.5rem;">Next Steps</h2>
+        <p>Claude's synthesis identified a clear direction: the experience should emphasize taste, identity, and lived-in spaces rather than traditional furniture categories. The hypothesis worth exploring is that <strong>users can better express their aesthetic through visual reactions than through predefined style labels.</strong></p>
+        
+        <p>To test this, I'll create a quick prototype exploring how new users might establish their taste profile through images and mood-based interactions. The key question: does a quiz-based interaction capture enough signal about user preferences, or should taste discovery be an ongoing, evolving dialogue throughout the Alterna experience?</p>
+      </div>
+    `
+  },
+  {
+    section: "What I Did",
+    number: "4",
+    title: "Taste Discovery: From Quiz to Ongoing Dialogue",
+    content: `
+      <h3>Taste Defining Experience</h3>
+      <p>One of the core ideas behind Alterna is that users shouldn't have to describe their style through predefined categories like "modern" or "bohemian." Instead, the platform should learn a user's aesthetic preferences through their reactions to visual inspiration.</p>
+      
+      <p>To explore this idea, I created a small prototype in Figma Make that experiments with how new users might establish their taste through images, moods, and visual cues rather than traditional onboarding questions.</p>
+      
+      <video 
+        controls 
+        preload="metadata" 
+        playsinline 
+        style="width:100%;max-width:800px;display:block;margin:2rem auto 0;border-radius:8px;border:1px solid var(--petal);background:#000;">
+        <source src="figma_prototype_recording.mov" type="video/quicktime">
+        <p style="color:var(--lavender);text-align:center;padding:2rem;">Your browser does not support video playback.</p>
+      </video>
+      <p style="text-align:center;font-style:italic;color:var(--lavender);margin-top:0.5rem;margin-bottom:2rem;">Interactive prototype walkthrough</p>
+      
+      <h3>Further Explorations With Claude</h3>
+      <p>After creating this initial prototype, I returned to Claude to explore whether the interaction model aligned with the themes identified in the earlier synthesis. Rather than asking the tool to generate a new design, <span style="color:var(--lavender);">I used it to help evaluate and expand the concept</span>, specifically looking for alternative ways users might begin to register their aesthetic preferences in the system.</p>
+      
+      <p>Claude came up with a few interesting ideas, including</p>
+      <ul>
+        <li><strong>Atmosphere Sorting:</strong> showing users sets of full-room images, and allowing them to choose which ones they'd be interested in living in. This moves away from the 'aesthetic' based selection I showed in my prototype, and allows the system to pick up signals about different user preferences like light quality, color density, spatial openness, etc</li>
+        <li><strong>Detail Zoom Interaction:</strong> showing users a full room, and allowing them to choose the object that catches their attention first - like a lamp, an art piece, or a couch. This might to the system a user's material preferences (wood, stone, metal), textural preferences, and potentially price sensitivity.</li>
+        <li><strong>Mood Sequencing:</strong> allowing users to specify how they'd like to feel in their space at different moments (after waking up, while working from home, while unwinding at night). This might allow the system to pick up on a user's intended functional use of the space they want to design.</li>
+      </ul>
+      
+      <h3>Design Interpretations</h3>
+      <p>While my initial prototype focused on simple image/text reactions, the additional models helped expand my thinking around the design space in taste discovery. The most useful outcome from this exercise was a clearer understanding of how Alterna might introduce new ways of discovering a user's taste preferences, and then interpret those preferences across multiple signals. Rather than relying on a single onboarding interaction, the platform could learn about a user's aesthetic through a combination of reactions, selections, and evolving collections of inspiration. Thinking about taste discovery as an ongoing interaction — rather than a one-time quiz — helped shape how the early experience might feel more exploratory and personal.</p>
+      
+      <div style="margin-top:4rem;padding-top:2rem;border-top:2px solid var(--lavender);">
+        <h2 style="font-size:1.8rem;font-weight:600;color:var(--lavender);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:1.5rem;">Next Steps</h2>
+        <p>The exploration revealed that taste discovery shouldn't be a single onboarding moment—it could be an ongoing conversation. The critical questions to validate are: <strong>(1) Do users prefer atmosphere-based selection over aesthetic labels? (2) Should taste signals come from a combination of interactions rather than one quiz format?</strong></p>
+        
+        <p>To move forward, I'll prototype 2-3 alternative taste discovery flows showing how the system could learn user preferences through different interaction models (atmosphere sorting, detail zoom, mood sequencing). I'll bring these concepts to the founders to align on which direction feels most true to Alterna's vision, then plan lightweight validation with potential users to test whether the chosen approach actually captures meaningful taste signals.</p>
+      </div>
+    `
+  },
+  {
+    section: "What I Did",
+    number: "5",
+    title: "Validating Direction with Founders",
+    content: `
+      <h3>Preparing For The Meeting</h3>
+      <p>After exploring several interaction models for taste discovery, the next step was validating the direction with the Alterna founders. Before the meeting, I prepared a short prototype and a set of discussion questions to help align on how the digital experience should support the service model.</p>
+
+      <h3>Building The Prototype</h3>
+      <p>Using Claude, I created a quick prototype to explore several ways the current Alterna online experience might evolve. The goal was to test how the platform could better capture user taste signals while also creating clearer touchpoints for ongoing engagement with the Alterna service. The prototype highlighted three potential improvements:</p>
+
+      <ul style="margin-left:1.5rem;margin-bottom:1.5rem;">
+        <li><strong>Improved Taste Signaling:</strong> Rather than asking users to define their style through fixed aesthetic categories, the prototype explores a more intuitive approach where users signal their preferences through visual reactions and emotional responses to inspiration.</li>
+        <li><strong>Visible, Editable Taste Profile:</strong> After completing the initial taste discovery exercise, the system generates a taste profile that users can view and refine over time. This artifact gives users something tangible early in the experience, encouraging continued interaction with the platform while also creating a natural moment to introduce the paid portion of the service.</li>
+        <li><strong>Integrated Final Deliverable:</strong> Instead of delivering the final mood board and product list through external tools like Pinterest or email, the prototype brings this artifact into the Alterna platform. This approach reduces friction in the collaborative design process while allowing the system to continue learning from user interactions and evolving their taste profile over time.</li>
+      </ul>
+
+      <div style="margin:2rem 0;">
+        <img src="2.png" alt="Claude prototype showing budget selection screen" style="width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+        <p style="font-style:italic;color:var(--lavender);text-align:center;margin-top:0.5rem;">Initial prototype in Claude, including taste signaling quiz, taste profile view, and curated design suggestion document</p>
+      </div>
+
+      <h3>Discussion Framework</h3>
+      <p>I also prepared a <a href="https://docs.google.com/document/d/1fanQxvmfLg7JmudQ_jsmY89__iYZFTWYNZ79IpgVtdg/edit?tab=t.0" target="_blank" style="color:var(--lavender);text-decoration:underline;">set of questions</a> to clarify how the platform should support the Alterna service model. These questions focused on key decisions around onboarding, designer involvement, and when the paid portion of the experience should be introduced.</p>
+
+      <div style="margin-top:4rem;padding-top:2rem;border-top:2px solid var(--lavender);">
+        <h2 style="font-size:1.8rem;font-weight:600;color:var(--lavender);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:1.5rem;">Next Steps</h2>
+        <p>The prototype and discussion framework are ready to bring to the founders. The key questions to resolve in the meeting are: <strong>(1) Does the enhanced taste discovery approach align with how Alterna wants users to experience the service? (2) At what point in the user journey should the platform introduce the paid designer collaboration?</strong></p>
+        
+        <p>After getting founder feedback on these concepts, I'll refine the prototype based on their direction and begin planning how to validate the approach with potential users. The goal is to ensure the digital experience supports Alterna's service model while creating a compelling taste discovery interaction that users actually want to engage with.</p>
+      </div>
+    `
+  }
+];
+
+
+
+
+// Initialize
+let currentEntryIndex = -1; // Start at cover page
+let currentSection = null;
+
+function renderEntries() {
+  const container = document.getElementById('entriesContainer');
+  container.innerHTML = '';
+  
+  entries.forEach((entry, index) => {
+    // Create entry element (none active by default, cover page starts active)
+    const entryEl = document.createElement('div');
+    entryEl.className = 'journal-entry';
+    entryEl.setAttribute('data-index', index);
+    entryEl.innerHTML = `
+      <div class="entry-date">Entry ${entry.number}</div>
+      <h2 class="entry-title">${entry.title}</h2>
+      <div class="entry-content">${entry.content}</div>
+    `;
+    container.appendChild(entryEl);
+  });
+  
+  // Update total count in bottom nav only
+  document.getElementById('totalEntriesBottom').textContent = entries.length;
+}
+
+function navigateEntry(direction) {
+  const newIndex = currentEntryIndex + direction;
+  
+  // Handle boundaries: cover page is -1, entries are 0 to entries.length-1
+  if (newIndex < -1 || newIndex >= entries.length) return;
+  
+  // Hide current page (cover or entry)
+  if (currentEntryIndex === -1) {
+    document.getElementById('coverPage').classList.remove('active');
+  } else {
+    const allEntries = document.querySelectorAll('.journal-entry');
+    if (allEntries[currentEntryIndex]) {
+      allEntries[currentEntryIndex].classList.remove('active');
+    }
+  }
+  
+  // Show new page
+  currentEntryIndex = newIndex;
+  
+  if (currentEntryIndex === -1) {
+    // Show cover page
+    document.getElementById('coverPage').classList.add('active');
+    document.getElementById('currentEntryBottom').textContent = 'Cover';
+  } else {
+    // Show entry
+    const allEntries = document.querySelectorAll('.journal-entry');
+    allEntries[currentEntryIndex].classList.add('active');
+    document.getElementById('currentEntryBottom').textContent = currentEntryIndex + 1;
+  }
+  
+  // Update button states
+  const isOnCover = currentEntryIndex === -1;
+  const isLast = currentEntryIndex === entries.length - 1;
+  
+  document.getElementById('prevBtnBottom').disabled = isOnCover;
+  document.getElementById('nextBtnBottom').disabled = isLast;
+  
+  // Show/hide nav bar based on whether we're on cover page
+  const navBar = document.querySelector('.entry-nav-bottom');
+  if (isOnCover) {
+    navBar.style.display = 'none';
+  } else {
+    navBar.style.display = 'flex';
+  }
+  
+  // Scroll to top of page
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Initialize on load
+window.addEventListener('load', () => {
+  renderEntries();
+  // Start on cover page - prev button disabled, nav hidden
+  document.getElementById('prevBtnBottom').disabled = true;
+  document.getElementById('currentEntryBottom').textContent = 'Cover';
+  document.querySelector('.entry-nav-bottom').style.display = 'none';
+});
+</script>
+
+</body>
+</html>
