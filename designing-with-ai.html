@@ -12,6 +12,7 @@
   --cream: #F4E9E0;
   --ivory: #F6F1EA;
   --accent: #C8A8CD;
+  --rose: #C89898;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -342,6 +343,14 @@ nav a:hover { color: var(--lavender); }
     gap: 0.75rem;
   }
 }
+
+/* Next Project Section */
+.next-section{background:var(--plum);padding:5rem 3.5rem;display:flex;align-items:center;justify-content:space-between;text-decoration:none}
+.next-label{font-size:0.68rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--rose);margin-bottom:0.75rem}
+.next-title{font-family:"DM Serif Display",serif;font-size:clamp(1.8rem,4vw,3.2rem);font-weight:700;letter-spacing:-0.04em;color:var(--ivory);line-height:1.1}
+.next-btn{width:3.5rem;height:3.5rem;border-radius:50%;border:1px solid rgba(234,216,210,0.25);display:flex;align-items:center;justify-content:center;color:var(--ivory);flex-shrink:0;transition:background 0.2s,border-color 0.2s,transform 0.2s}
+.next-section:hover .next-btn{background:rgba(246,241,234,0.1);border-color:var(--rose);transform:rotate(45deg)}
+.next-section .rose{color:var(--rose)}
 </style>
 </head>
 <body>
@@ -729,6 +738,18 @@ window.addEventListener('load', () => {
   document.querySelector('.entry-nav-bottom').style.display = 'none';
 });
 </script>
+
+<a href="research-and-design.html" class="next-section">
+  <div>
+    <p class="next-label">Next project</p>
+    <h2 class="next-title">Research &<br>Design</h2>
+  </div>
+  <div class="next-btn">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </div>
+</a>
 
 </body>
 </html>
