@@ -72,9 +72,47 @@ footer{padding:5rem 3.5rem 3rem;max-width:1160px;margin:0 auto}
 .u{opacity:0;animation:up 0.7s ease forwards}
 .d1{animation-delay:0.05s}
 .d2{animation-delay:0.2s}
+
+/* ── Password Gate ── */
+#pw-gate{
+  position:fixed;inset:0;z-index:999;
+  background:var(--plum);
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity 0.5s ease;
+}
+#pw-gate.unlocked{opacity:0;pointer-events:none;}
+.pw-box{display:flex;flex-direction:column;align-items:center;gap:1.5rem;text-align:center;padding:2rem;}
+.pw-logo{font-family:var(--man);font-size:0.8rem;font-weight:600;letter-spacing:0.1em;color:var(--rose);text-transform:uppercase;margin-bottom:0.25rem;}
+.pw-heading{font-family:var(--man);font-size:clamp(1.8rem,4vw,3rem);font-weight:700;letter-spacing:-0.04em;line-height:1;color:var(--ivory);}
+.pw-heading em{font-family:var(--lora);font-weight:400;font-style:italic;color:var(--muted);letter-spacing:-0.02em;}
+.pw-sub{font-size:0.82rem;color:rgba(246,241,234,0.35);font-weight:400;}
+.pw-row{display:flex;gap:0.65rem;align-items:center;margin-top:0.25rem;}
+.pw-input{font-family:var(--man);font-size:0.88rem;background:rgba(246,241,234,0.07);border:1px solid rgba(234,216,210,0.18);color:var(--ivory);padding:0.7rem 1.25rem;border-radius:999px;outline:none;width:210px;letter-spacing:0.04em;transition:border-color 0.2s;}
+.pw-input::placeholder{color:rgba(246,241,234,0.22);}
+.pw-input:focus{border-color:rgba(234,216,210,0.45);}
+.pw-input.error{border-color:var(--rose);animation:shake 0.35s ease;}
+.pw-btn{font-family:var(--man);font-size:0.8rem;font-weight:600;letter-spacing:0.04em;background:var(--ivory);color:var(--plum);border:none;padding:0.7rem 1.4rem;border-radius:999px;cursor:pointer;transition:background 0.2s,transform 0.15s;white-space:nowrap;}
+.pw-btn:hover{background:var(--petal);}
+.pw-btn:active{transform:scale(0.97);}
+.pw-error{font-size:0.75rem;color:var(--rose);opacity:0;transition:opacity 0.2s;min-height:1em;}
+.pw-error.visible{opacity:1;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 </style>
 </head>
 <body>
+<div id="pw-gate">
+  <div class="pw-box">
+    <div class="pw-logo">Cameron Womack</div>
+    <h1 class="pw-heading">This site is<br><em>password protected.</em></h1>
+    <p class="pw-sub">Enter the password to view the portfolio.</p>
+    <div class="pw-row">
+      <input class="pw-input" id="pw-input" type="password" placeholder="Password" autocomplete="off">
+      <button class="pw-btn" id="pw-btn">Enter →</button>
+    </div>
+    <p class="pw-error" id="pw-error">Incorrect password. Try again.</p>
+  </div>
+</div>
+
 <nav>
  <a href="#" class="nav-logo">Cameron Womack</a>
  <ul class="nav-links">
@@ -259,6 +297,48 @@ function updateReveal() {
 }
 window.addEventListener('scroll', updateReveal, { passive: true });
 updateReveal();
+</script>
+<script>
+// Password gate — only on homepage
+(function() {
+  const CORRECT = 'womack2026';
+  const SESSION_KEY = 'cw_portfolio_auth';
+  const gate = document.getElementById('pw-gate');
+  const input = document.getElementById('pw-input');
+  const btn = document.getElementById('pw-btn');
+  const errMsg = document.getElementById('pw-error');
+
+  // Already authenticated this session — skip gate
+  if (sessionStorage.getItem(SESSION_KEY) === '1') {
+    gate.style.display = 'none';
+    return;
+  }
+
+  // Prevent body scroll while gate is up
+  document.body.style.overflow = 'hidden';
+
+  function attempt() {
+    if (input.value === CORRECT) {
+      sessionStorage.setItem(SESSION_KEY, '1');
+      gate.classList.add('unlocked');
+      document.body.style.overflow = '';
+      setTimeout(() => { gate.style.display = 'none'; }, 500);
+    } else {
+      errMsg.classList.add('visible');
+      input.classList.add('error');
+      input.value = '';
+      setTimeout(() => {
+        input.classList.remove('error');
+        errMsg.classList.remove('visible');
+      }, 1800);
+    }
+  }
+
+  btn.addEventListener('click', attempt);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') attempt(); });
+  // Focus input after a beat
+  setTimeout(() => input.focus(), 100);
+})();
 </script>
 </body>
 </html>
