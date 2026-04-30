@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alterna Studios — Design System v8</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=DM+Mono:wght@300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════════════════════
+   ALTERNA STUDIOS — DESIGN SYSTEM v8
+   Palette: Wine & Cream
+   Mashed Potatoes · Artichoke · Green Bean
+   Cranberry · Cabernet · Mulled Wine
+   Primary: Cranberry — Cabernet on dark
+   Ground:  Mashed Potatoes #FFF2E6
+   ══════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* ── EXACT HEX FROM PALETTE IMAGE ── */
+  --mashed:      #FFF2E6;   /* Mashed Potatoes — warm cream ground */
+  --artichoke:   #586357;   /* Artichoke — muted sage-grey, supporting */
+  --greenbean:   #052102;   /* Green Bean — deep forest near-black */
+  --cranberry:   #734141;   /* Cranberry — PRIMARY UI accent */
+  --cabernet:    #3D0000;   /* Cabernet — dark screens, primary dark */
+  --mulledwine:  #280D08;   /* Mulled Wine — deepest near-black */
+
+  /* ── DERIVED ── */
+  --cranberry-lt: #8F5555;  /* lighter cranberry for hover on dark */
+  --mashed-dk:    #F0E4D4;  /* slightly deeper cream for card surfaces */
+  --stone:        #E2D8CC;  /* warm stone — borders */
+  --ash:          #A89888;  /* warm ash — secondary text */
+
+  /* ── SEMANTIC ── */
+  --ground:      var(--mashed);
+  --ink:         var(--mulledwine);
+  --primary:     var(--cranberry);
+  --primary-dk:  var(--cabernet);
+  --dark-bg:     var(--cabernet);
+  --dark-text:   var(--mashed);
+  --supporting:  var(--artichoke);
+}
+
+body { background: #E8DDD0; font-family: 'Newsreader', Georgia, serif; color: var(--mulledwine); }
+
+.ds-page { max-width: 1080px; margin: 0 auto; background: var(--mashed); }
+
+/* ── TITLE BAR ── */
+.ds-title-bar {
+  background: var(--cabernet);
+  padding: 14px 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 3px solid var(--cranberry);
+}
+.ds-title { font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: .22em; color: var(--mashed); }
+.ds-version { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: .14em; color: rgba(255,242,230,.3); }
+
+.ds-section { padding: 40px 28px; border-bottom: 1px solid var(--stone); }
+.ds-section-label {
+  font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: .28em;
+  text-transform: uppercase; color: var(--ash);
+  margin-bottom: 20px; display: flex; align-items: center; gap: 12px;
+}
+.ds-section-label::after { content: ''; flex: 1; height: 1px; background: var(--stone); }
+
+/* ══ 01 WORDMARK ══ */
+.wordmark-block {
+  background: var(--cabernet); padding: 40px 28px 32px;
+  border-bottom: 4px solid var(--cranberry);
+}
+.wm-primary {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(72px, 14vw, 120px);
+  letter-spacing: .04em; color: var(--mashed); line-height: .88;
+}
+.wm-primary .accent { color: var(--cranberry); }
+.wm-sub {
+  font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: .26em;
+  text-transform: uppercase; color: rgba(255,242,230,.28); margin-top: 10px;
+}
+.wm-variants { display: flex; gap: 32px; margin-top: 24px; flex-wrap: wrap; align-items: center; }
+.wm-v { display: flex; flex-direction: column; gap: 5px; }
+.wm-v-label { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,242,230,.25); }
+.wm-on-cream  { background: var(--mashed); padding: 10px 14px; display: inline-block; }
+.wm-on-cran   { background: var(--cranberry); padding: 10px 14px; display: inline-block; }
+.wm-on-art    { background: var(--artichoke); padding: 10px 14px; display: inline-block; }
+.wm-sm-light  { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: .06em; color: var(--mulledwine); }
+.wm-sm-dark   { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: .06em; color: var(--mashed); }
+
+/* ══ PALETTE ══ */
+.palette-grid {
+  display: grid; grid-template-columns: repeat(6, 1fr); margin-bottom: 24px;
+}
+.swatch { aspect-ratio: 1; padding: 10px 10px 12px; display: flex; flex-direction: column; justify-content: flex-end; }
+.swatch-name  { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700; line-height: 1.1; }
+.swatch-hex   { font-family: 'DM Mono', monospace; font-size: 9px; opacity: .55; margin-top: 3px; }
+.swatch-role  { font-family: 'DM Mono', monospace; font-size: 7px; opacity: .32; margin-top: 2px; line-height: 1.3; }
+
+/* ══ TYPOGRAPHY ══ */
+.type-row {
+  display: grid; grid-template-columns: 160px 1fr;
+  padding: 16px 0; border-bottom: 1px solid var(--stone); gap: 20px; align-items: baseline;
+}
+.type-meta-name { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: .16em; text-transform: uppercase; color: var(--ash); }
+.type-meta-spec { font-family: 'DM Mono', monospace; font-size: 7px; color: var(--stone); letter-spacing: .04em; margin-top: 3px; }
+.type-meta-use  { font-family: 'DM Mono', monospace; font-size: 7px; color: var(--cranberry); margin-top: 2px; }
+
+/* ══ BUTTONS ══ */
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 20px; }
+
+.btn {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; cursor: pointer;
+  padding: 11px 24px; border: none; transition: all .18s; border-radius: 6px;
+}
+.btn-primary { background: var(--cranberry); color: var(--mashed); }
+.btn-primary:hover { background: var(--cabernet); transform: translateY(-1px); }
+
+.btn-dark { background: var(--cabernet); color: var(--mashed); }
+.btn-dark:hover { background: var(--mulledwine); transform: translateY(-1px); }
+
+.btn-outline { background: transparent; color: var(--mulledwine); border: 1.5px solid var(--stone); border-radius: 6px; }
+.btn-outline:hover { border-color: var(--cranberry); color: var(--cranberry); }
+
+.btn-cran-outline { background: transparent; color: var(--cranberry); border: 1.5px solid var(--cranberry); border-radius: 6px; }
+.btn-cran-outline:hover { background: var(--cranberry); color: var(--mashed); }
+
+.btn-ghost { background: transparent; color: var(--ash); border: none; padding: 11px 0;
+  font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .2em;
+  text-transform: uppercase; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; }
+.btn-ghost:hover { color: var(--mulledwine); }
+
+/* ══ PILLS ══ */
+.pill-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+.pill {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: .09em; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 999px; display: inline-block;
+}
+.pill-cran    { background: var(--cranberry); color: var(--mashed); }
+.pill-cab     { background: var(--cabernet);  color: var(--mashed); }
+.pill-art     { background: var(--artichoke); color: var(--mashed); }
+.pill-gb      { background: var(--greenbean); color: var(--mashed); }
+.pill-cream   { background: var(--mashed-dk); color: var(--mulledwine); border: 1px solid var(--stone); }
+.pill-outline { border: 1.5px solid var(--stone); color: var(--ash); }
+.pill-mulled  { background: var(--mulledwine); color: var(--mashed); }
+
+/* ══ PROGRESS DOTS ══ */
+.progress-dots { display: flex; gap: 6px; align-items: center; }
+.p-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--stone); transition: all .2s; }
+.p-dot.active { background: var(--cranberry); transform: scale(1.5); }
+.p-dot.done   { background: var(--cabernet); }
+
+/* ══ CHOICE CARDS — price dominant ══ */
+.choice-stack { display: flex; flex-direction: column; gap: 8px; }
+.choice-card {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 20px; border: 1.5px solid var(--stone);
+  cursor: pointer; background: rgba(255,255,255,.4);
+  border-radius: 8px;
+  transition: border-color .18s, background .15s, transform .12s;
+}
+.choice-card:hover { border-color: var(--cranberry); transform: translateX(2px); }
+.choice-card.selected { border-color: var(--cabernet); background: rgba(61,0,0,.04); }
+.choice-card-num {
+  font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: .04em;
+  color: var(--stone); flex-shrink: 0; width: 28px;
+}
+.choice-card.selected .choice-card-num { color: var(--cranberry); }
+.choice-card-text { flex: 1; }
+.choice-card-name {
+  font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--ash); margin-bottom: 3px;
+}
+.choice-card-price {
+  font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: .02em;
+  color: var(--mulledwine); line-height: 1.0; margin-bottom: 3px;
+}
+.choice-card.selected .choice-card-price { color: var(--cabernet); }
+.choice-card-desc {
+  font-family: 'Newsreader', serif; font-style: italic;
+  font-size: 12px; color: var(--ash); line-height: 1.5;
+}
+.choice-radio {
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 1.5px solid var(--stone); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .18s;
+}
+.choice-card.selected .choice-radio { background: var(--cabernet); border-color: var(--cabernet); }
+.choice-radio-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--mashed); opacity: 0; }
+.choice-card.selected .choice-radio-dot { opacity: 1; }
+
+/* ══ ID CARD — The Performer ══ */
+.id-card { background: var(--mashed); border: 1px solid var(--stone); border-radius: 4px; overflow: hidden; }
+.id-card-stamp {
+  padding: 10px 14px 8px; border-bottom: 1px solid var(--stone);
+  display: flex; align-items: flex-start; justify-content: space-between;
+  background: var(--cabernet); border-bottom: 2px solid var(--cranberry);
+}
+.id-card-stamp-brand { font-family: 'Bebas Neue', sans-serif; font-size: 12px; letter-spacing: .12em; color: var(--mashed); }
+.id-card-stamp-meta  { text-align: right; }
+.id-card-stamp-num   { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: .12em; color: rgba(255,242,230,.45); }
+.id-card-stamp-type  { font-family: 'DM Mono', monospace; font-size: 7px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,242,230,.25); margin-top: 2px; }
+.id-card-headline { padding: 12px 14px 10px; border-bottom: 1px solid var(--stone); }
+.id-card-headline-text { font-family: 'Bebas Neue', sans-serif; font-size: 42px; letter-spacing: .04em; line-height: .9; color: var(--mulledwine); }
+.id-card-sub { font-family: 'DM Mono', monospace; font-size: 7px; letter-spacing: .14em; text-transform: uppercase; color: var(--ash); margin-top: 5px; }
+.id-card-body { display: grid; grid-template-columns: 80px 1fr; }
+.id-card-photo { border-right: 1px solid var(--stone); padding: 12px 10px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.id-card-photo-box { width: 58px; height: 72px; border: 1px solid var(--stone); background: var(--mashed-dk); display: flex; align-items: center; justify-content: center; }
+.id-card-photo-label { font-family: 'DM Mono', monospace; font-size: 7px; letter-spacing: .1em; text-transform: uppercase; color: var(--stone); }
+.id-card-fields { padding: 8px 12px; }
+.id-card-row { display: grid; grid-template-columns: 72px 1fr; gap: 6px; padding: 5px 0 4px; border-bottom: 1px dashed var(--stone); align-items: baseline; }
+.id-card-row:last-child { border-bottom: none; }
+.id-card-key { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: .1em; text-transform: uppercase; color: var(--ash); }
+.id-card-val { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 600; color: var(--mulledwine); line-height: 1.1; }
+.id-card-tag { display: inline-block; border: 1px solid var(--mulledwine); border-radius: 999px; padding: 1px 8px; font-family: 'DM Mono', monospace; font-size: 7px; letter-spacing: .06em; margin-left: 5px; vertical-align: middle; }
+
+/* ══ AI CALCULATION ANIMATION ══ */
+.calc-demo { background: var(--cabernet); padding: 32px 28px; border-radius: 8px; max-width: 500px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.calc-spinner { width: 48px; height: 48px; border-radius: 50%; border: 3px solid rgba(255,242,230,.12); border-top-color: var(--cranberry); animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.calc-lines { width: 100%; max-width: 320px; display: flex; flex-direction: column; gap: 8px; }
+.calc-line { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid rgba(255,242,230,.08); }
+.calc-line-label { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,242,230,.35); }
+.calc-line-val   { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: .1em; color: rgba(255,242,230,.4); }
+.calc-line-val.active { color: var(--cranberry); }
+.calc-hed { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: .06em; color: var(--mashed); }
+.calc-sub { font-family: 'Newsreader', serif; font-style: italic; font-size: 12px; color: rgba(255,242,230,.38); text-align: center; }
+.typewriter {
+  font-family: 'DM Mono', monospace; font-size: 12px; color: var(--cranberry);
+  overflow: hidden; white-space: nowrap; border-right: 2px solid var(--cranberry);
+  width: 0; animation: typewriter 3s steps(45) 0.8s forwards, blink 0.75s step-end infinite;
+  max-width: 320px;
+}
+@keyframes typewriter { to { width: 320px; } }
+@keyframes blink { 50% { border-color: transparent; } }
+
+/* ══ MARQUEE ══ */
+.marquee-wrap { overflow: hidden; white-space: nowrap; border-top: 1px solid var(--stone); border-bottom: 1px solid var(--stone); background: var(--mashed); }
+.marquee-inner { display: inline-block; animation: marquee 24s linear infinite; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-item { display: inline-flex; align-items: center; padding: 10px 0; }
+.marquee-text { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--mulledwine); padding: 0 20px; }
+.marquee-sep  { font-family: 'Bebas Neue', sans-serif; font-size: 14px; color: var(--cranberry); padding: 0 4px; }
+
+/* ══ SCREEN SAMPLES ══ */
+.screen-label { background: var(--mashed-dk); padding: 6px 12px; font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: .16em; text-transform: uppercase; color: var(--ash); border-top: 1px solid var(--stone); border-bottom: 1px solid var(--stone); }
+
+/* INTRO — Cabernet full bleed */
+.screen-intro { background: var(--cabernet); min-height: 480px; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+.intro-grain { position: absolute; inset: 0; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E"); }
+.intro-stripe { height: 4px; background: var(--cranberry); flex-shrink: 0; }
+.intro-nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 28px; flex-shrink: 0; position: relative; z-index: 2; }
+.intro-nav-wm  { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: .06em; color: rgba(255,242,230,.55); }
+.intro-nav-tag { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,242,230,.25); }
+.intro-hed-block { flex: 1; display: flex; align-items: flex-end; padding: 0 28px 28px; position: relative; z-index: 2; }
+.intro-headline { font-family: 'Bebas Neue', sans-serif; font-size: clamp(68px, 13vw, 108px); letter-spacing: .03em; line-height: .88; color: var(--mashed); }
+.intro-headline .accent { color: var(--cranberry); }
+.intro-foot { border-top: 1px solid rgba(255,242,230,.1); padding: 14px 28px 22px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; position: relative; z-index: 2; }
+.intro-copy { font-family: 'Newsreader', serif; font-style: italic; font-size: 13px; color: rgba(255,242,230,.45); line-height: 1.6; max-width: 320px; }
+.intro-meta { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,242,230,.2); margin-top: 5px; }
+.intro-cta { background: var(--cranberry); color: var(--mashed); border: none; padding: 12px 24px; font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; cursor: pointer; border-radius: 6px; white-space: nowrap; flex-shrink: 0; margin-left: 20px; }
+.intro-cta:hover { background: var(--cranberry-lt); }
+
+/* QUIZ STEP */
+.screen-step { background: var(--mashed); border-top: 3px solid var(--cabernet); }
+.step-nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 28px; border-bottom: 1px solid var(--stone); }
+.step-wm { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: .06em; color: var(--mulledwine); }
+.step-body { padding: 28px 28px 40px; }
+.step-eyebrow { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: .24em; text-transform: uppercase; color: var(--ash); margin-bottom: 8px; }
+.step-hed { font-family: 'Bebas Neue', sans-serif; font-size: clamp(32px, 5.5vw, 50px); letter-spacing: .03em; line-height: .9; color: var(--mulledwine); margin-bottom: 6px; }
+.step-hed .accent { color: var(--cranberry); }
+.step-sub { font-family: 'Newsreader', serif; font-style: italic; font-size: 13px; color: var(--ash); line-height: 1.65; margin-bottom: 24px; }
+
+/* RESULT */
+.screen-result { background: var(--mashed); }
+.result-stripe { height: 4px; display: flex; }
+.rs1 { flex: 3; background: var(--cabernet); }
+.rs2 { flex: 1; background: var(--cranberry); }
+.rs3 { flex: 2; background: var(--mulledwine); }
+.rs4 { flex: 1; background: var(--artichoke); }
+.rs5 { flex: 1; background: var(--mashed-dk); }
+.result-nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 28px; border-bottom: 1px solid var(--stone); }
+.result-body { padding: 24px 28px 40px; }
+.result-eyebrow { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: .24em; text-transform: uppercase; color: var(--ash); margin-bottom: 10px; }
+.result-hed { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 7vw, 58px); letter-spacing: .03em; line-height: .88; color: var(--mulledwine); margin-bottom: 24px; }
+.result-hed .accent { color: var(--cranberry); }
+
+/* CONFIRMATION — Mulled Wine deep dark */
+.screen-confirm { background: var(--mulledwine); min-height: 400px; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+.confirm-grain { position: absolute; inset: 0; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E"); }
+.confirm-stripe { height: 4px; background: var(--cranberry); flex-shrink: 0; }
+.confirm-inner { padding: 22px 28px 32px; position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column; }
+.confirm-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.confirm-wm { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: .06em; color: rgba(255,242,230,.4); }
+.confirm-status { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: .18em; text-transform: uppercase; color: rgba(115,65,65,.5); }
+.confirm-lines { margin-bottom: 16px; border-top: 1px solid rgba(255,242,230,.08); }
+.confirm-line { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid rgba(255,242,230,.05); font-family: 'DM Mono', monospace; font-size: 7px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,242,230,.2); }
+.confirm-hed { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 10vw, 72px); letter-spacing: .03em; line-height: .88; color: var(--mashed); flex: 1; margin-bottom: 16px; }
+.confirm-hed .accent { color: var(--cranberry); }
+.confirm-body { font-family: 'Newsreader', serif; font-style: italic; font-size: 13px; color: rgba(255,242,230,.45); line-height: 1.7; max-width: 280px; margin-bottom: 22px; }
+.confirm-cta { background: var(--cranberry); color: var(--mashed); border: none; padding: 12px 24px; font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; cursor: pointer; border-radius: 6px; align-self: flex-start; }
+.confirm-cta:hover { background: var(--cranberry-lt); }
+</style>
+</head>
+<body>
+<div class="ds-page">
+
+<!-- TITLE BAR -->
+<div class="ds-title-bar">
+  <div class="ds-title">Alterna Studios — Design System v8</div>
+  <div class="ds-version">Wine & Cream · 2026</div>
+</div>
+
+<!-- 01 WORDMARK -->
+<div class="wordmark-block">
+  <div class="wm-primary">ALTERNA<span class="accent">.</span></div>
+  <div class="wm-sub">Interior taste profiling · AI-powered curation · Built at Harvard iLab</div>
+  <div class="wm-variants">
+    <div class="wm-v">
+      <div class="wm-v-label">On cabernet</div>
+      <span class="wm-sm-dark">ALTERNA.</span>
+    </div>
+    <div class="wm-v">
+      <div class="wm-v-label">On cream</div>
+      <div class="wm-on-cream"><span class="wm-sm-light">ALTERNA.</span></div>
+    </div>
+    <div class="wm-v">
+      <div class="wm-v-label">On cranberry</div>
+      <div class="wm-on-cran"><span class="wm-sm-dark">ALTERNA.</span></div>
+    </div>
+    <div class="wm-v">
+      <div class="wm-v-label">On artichoke</div>
+      <div class="wm-on-art"><span class="wm-sm-dark">ALTERNA.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 PALETTE -->
+<div class="ds-section">
+  <div class="ds-section-label">02 — Color palette · Wine & Cream</div>
+
+  <!-- Source strip -->
+  <div style="display:flex;gap:6px;margin-bottom:20px;align-items:center;">
+    <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:#A89888;margin-right:8px;">Source:</div>
+    <div style="background:#FFF2E6;width:44px;height:28px;border-radius:3px;display:flex;align-items:flex-end;padding:3px 4px;border:1px solid #E2D8CC;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:rgba(40,13,8,.5);">#FFF2E6</span></div>
+    <div style="background:#586357;width:44px;height:28px;border-radius:3px;display:flex;align-items:flex-end;padding:3px 4px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:rgba(255,242,230,.6);">#586357</span></div>
+    <div style="background:#052102;width:44px;height:28px;border-radius:3px;display:flex;align-items:flex-end;padding:3px 4px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:rgba(255,242,230,.6);">#052102</span></div>
+    <div style="background:#734141;width:44px;height:28px;border-radius:3px;display:flex;align-items:flex-end;padding:3px 4px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:rgba(255,242,230,.7);">#734141</span></div>
+    <div style="background:#3D0000;width:44px;height:28px;border-radius:3px;display:flex;align-items:flex-end;padding:3px 4px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:rgba(255,242,230,.6);">#3D0000</span></div>
+    <div style="background:#280D08;width:44px;height:28px;border-radius:3px;display:flex;align-items:flex-end;padding:3px 4px;"><span style="font-family:'DM Mono',monospace;font-size:7px;color:rgba(255,242,230,.6);">#280D08</span></div>
+    <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;color:#A89888;margin-left:6px;">Exact hex from palette image</div>
+  </div>
+
+  <div class="palette-grid">
+    <div class="swatch" style="background:#FFF2E6;border:1px solid #E2D8CC;">
+      <div class="swatch-name" style="color:#280D08;">Mashed Potatoes</div>
+      <div class="swatch-hex" style="color:#280D08;">#FFF2E6</div>
+      <div class="swatch-role" style="color:#280D08;">Ground · cream</div>
+    </div>
+    <div class="swatch" style="background:#586357;">
+      <div class="swatch-name" style="color:#FFF2E6;">Artichoke</div>
+      <div class="swatch-hex" style="color:#FFF2E6;">#586357</div>
+      <div class="swatch-role" style="color:#FFF2E6;">Supporting neutral</div>
+    </div>
+    <div class="swatch" style="background:#052102;">
+      <div class="swatch-name" style="color:#FFF2E6;">Green Bean</div>
+      <div class="swatch-hex" style="color:#FFF2E6;">#052102</div>
+      <div class="swatch-role" style="color:#FFF2E6;">Deep forest</div>
+    </div>
+    <div class="swatch" style="background:#734141;">
+      <div class="swatch-name" style="color:#FFF2E6;">Cranberry</div>
+      <div class="swatch-hex" style="color:#FFF2E6;">#734141</div>
+      <div class="swatch-role" style="color:#FFF2E6;">PRIMARY accent</div>
+    </div>
+    <div class="swatch" style="background:#3D0000;">
+      <div class="swatch-name" style="color:#FFF2E6;">Cabernet</div>
+      <div class="swatch-hex" style="color:#FFF2E6;">#3D0000</div>
+      <div class="swatch-role" style="color:#FFF2E6;">Dark screens · CTAs</div>
+    </div>
+    <div class="swatch" style="background:#280D08;">
+      <div class="swatch-name" style="color:#FFF2E6;">Mulled Wine</div>
+      <div class="swatch-hex" style="color:#FFF2E6;">#280D08</div>
+      <div class="swatch-role" style="color:#FFF2E6;">Ink · deepest dark</div>
+    </div>
+  </div>
+
+  <!-- Combinations -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:4px;">
+    <div style="background:#280D08;padding:16px 14px;border-radius:4px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.06em;color:#FFF2E6;">ALTERNA.</div>
+      <div style="font-family:'DM Mono',monospace;font-size:8px;color:rgba(115,65,65,.55);margin-top:8px;letter-spacing:.1em;">Mulled Wine bg</div>
+    </div>
+    <div style="background:#3D0000;padding:16px 14px;border-radius:4px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.06em;color:#FFF2E6;">ALTERNA.</div>
+      <div style="font-family:'DM Mono',monospace;font-size:8px;color:rgba(255,242,230,.3);margin-top:8px;letter-spacing:.1em;">Cabernet bg</div>
+    </div>
+    <div style="background:#734141;padding:16px 14px;border-radius:4px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.06em;color:#FFF2E6;">ALTERNA.</div>
+      <div style="font-family:'DM Mono',monospace;font-size:8px;color:rgba(255,242,230,.4);margin-top:8px;letter-spacing:.1em;">Cranberry bg</div>
+    </div>
+    <div style="background:#FFF2E6;padding:16px 14px;border-radius:4px;border:1px solid #E2D8CC;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.06em;color:#280D08;">ALTERNA.</div>
+      <div style="font-family:'DM Mono',monospace;font-size:8px;color:#A89888;margin-top:8px;letter-spacing:.1em;">Cream ground</div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 TYPOGRAPHY -->
+<div class="ds-section">
+  <div class="ds-section-label">03 — Typography</div>
+  <div style="border-top:1px solid var(--stone);">
+    <div class="type-row">
+      <div><div class="type-meta-name">Display XL</div><div class="type-meta-spec">Bebas Neue · 96px</div><div class="type-meta-use">Intro · confirmation</div></div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,9vw,96px);letter-spacing:.03em;line-height:.88;color:var(--mulledwine);">FIND YOUR FEEL.</div>
+    </div>
+    <div class="type-row">
+      <div><div class="type-meta-name">Display LG</div><div class="type-meta-spec">Bebas Neue · 56px</div><div class="type-meta-use">Section heads</div></div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,5.5vw,56px);letter-spacing:.03em;line-height:.9;color:var(--mulledwine);">HERE'S WHAT WE KNOW.</div>
+    </div>
+    <div class="type-row">
+      <div><div class="type-meta-name">Price / Value</div><div class="type-meta-spec">Bebas Neue · 26px</div><div class="type-meta-use">Choice card dominant</div></div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:.02em;color:var(--cranberry);">$5,000 – $15,000</div>
+    </div>
+    <div class="type-row">
+      <div><div class="type-meta-name">UI Condensed</div><div class="type-meta-spec">Barlow Cond 700 · 16px</div><div class="type-meta-use">Cards · buttons · nav</div></div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;letter-spacing:.04em;color:var(--mulledwine);">Starter · Standard · Premium</div>
+    </div>
+    <div class="type-row">
+      <div><div class="type-meta-name">Editorial</div><div class="type-meta-spec">Newsreader Italic · 16px</div><div class="type-meta-use">Body · descriptions</div></div>
+      <div style="font-family:'Newsreader',serif;font-style:italic;font-size:16px;font-weight:300;color:var(--mulledwine);line-height:1.5;">No style categories. Just a few questions — and your instincts.</div>
+    </div>
+    <div class="type-row" style="border-bottom:none;">
+      <div><div class="type-meta-name">Mono Label</div><div class="type-meta-spec">DM Mono · 8–9px</div><div class="type-meta-use">Eyebrows · metadata</div></div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--ash);">Budget · Step 03 of 07</div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 BUTTONS & PILLS -->
+<div class="ds-section">
+  <div class="ds-section-label">04 — Buttons · rounded 6px</div>
+  <div class="btn-row">
+    <button class="btn btn-primary">Start the quiz →</button>
+    <button class="btn btn-dark">Send my profile →</button>
+    <button class="btn btn-outline">Learn more</button>
+    <button class="btn btn-cran-outline">View profile</button>
+    <button class="btn-ghost">Skip this step</button>
+  </div>
+  <div style="background:var(--cabernet);padding:16px 20px;border-radius:8px;margin-bottom:24px;display:flex;align-items:center;gap:12px;">
+    <button style="background:#734141;color:#FFF2E6;border:none;padding:11px 22px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:6px;">Open my design hub →</button>
+    <span style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,242,230,.3);">On cabernet dark screen</span>
+  </div>
+
+  <div class="ds-section-label" style="margin-top:8px;">Pills · fully rounded</div>
+  <div class="pill-row">
+    <span class="pill pill-cab">Cabernet</span>
+    <span class="pill pill-cran">Cranberry</span>
+    <span class="pill pill-mulled">Mulled Wine</span>
+    <span class="pill pill-art">Artichoke</span>
+    <span class="pill pill-gb">Green Bean</span>
+    <span class="pill pill-cream">Mashed Potatoes</span>
+    <span class="pill pill-outline">No rush</span>
+  </div>
+
+  <div class="ds-section-label" style="margin-top:20px;">Progress dots</div>
+  <div class="progress-dots">
+    <div class="p-dot done"></div><div class="p-dot done"></div>
+    <div class="p-dot active"></div><div class="p-dot"></div>
+    <div class="p-dot"></div><div class="p-dot"></div><div class="p-dot"></div>
+  </div>
+</div>
+
+<!-- 04b CHOICE CARDS -->
+<div class="ds-section">
+  <div class="ds-section-label">04b — Choice cards · price range dominant</div>
+  <div class="choice-stack" style="max-width:560px;">
+    <div class="choice-card"><div class="choice-card-num">01</div><div class="choice-card-text"><div class="choice-card-name">Starter</div><div class="choice-card-price">Up to $5,000</div><div class="choice-card-desc">Smart picks, accessible brands. Focused on impact pieces.</div></div><div class="choice-radio"><div class="choice-radio-dot"></div></div></div>
+    <div class="choice-card selected"><div class="choice-card-num">02</div><div class="choice-card-text"><div class="choice-card-name">Standard</div><div class="choice-card-price">$5,000 – $15,000</div><div class="choice-card-desc">A balance of quality and value. Room for standout pieces.</div></div><div class="choice-radio"><div class="choice-radio-dot"></div></div></div>
+    <div class="choice-card"><div class="choice-card-num">03</div><div class="choice-card-text"><div class="choice-card-name">Premium</div><div class="choice-card-price">$15,000 and above</div><div class="choice-card-desc">Heirloom-quality sourcing. Curated without compromise.</div></div><div class="choice-radio"><div class="choice-radio-dot"></div></div></div>
+  </div>
+</div>
+
+<!-- 04c ID CARD -->
+<div class="ds-section">
+  <div class="ds-section-label">04c — Profile ID card · "The Performer"</div>
+  <div style="max-width:460px;">
+    <div class="id-card">
+      <div class="id-card-stamp">
+        <div><div class="id-card-stamp-brand">ALTERNA.</div><div style="font-family:'DM Mono',monospace;font-size:7px;letter-spacing:.1em;color:rgba(255,242,230,.3);margin-top:2px;">TASTE PROFILE</div></div>
+        <div class="id-card-stamp-meta"><div class="id-card-stamp-num">AT 0047</div><div class="id-card-stamp-type">Harvard iLab · 2026</div></div>
+      </div>
+      <div class="id-card-headline">
+        <div class="id-card-headline-text">THE<br>PROFILE</div>
+        <div class="id-card-sub">Interior taste · design brief · personal edition</div>
+      </div>
+      <div class="id-card-body">
+        <div class="id-card-photo">
+          <div class="id-card-photo-box"><svg width="20" height="24" viewBox="0 0 20 24" fill="none"><circle cx="10" cy="7" r="5" fill="#E2D8CC"/><path d="M0 22c0-5.523 4.477-10 10-10s10 4.477 10 10" fill="#E2D8CC"/></svg></div>
+          <div class="id-card-photo-label">Photo</div>
+        </div>
+        <div class="id-card-fields">
+          <div class="id-card-row"><div class="id-card-key">Name</div><div class="id-card-val">Cameron</div></div>
+          <div class="id-card-row"><div class="id-card-key">Rooms</div><div class="id-card-val">Bedroom, Living</div></div>
+          <div class="id-card-row"><div class="id-card-key">Budget</div><div class="id-card-val">$5K–15K <span class="id-card-tag">Standard</span></div></div>
+          <div class="id-card-row"><div class="id-card-key">Timeline</div><div class="id-card-val">Within months</div></div>
+          <div class="id-card-row"><div class="id-card-key">Texture</div><div class="id-card-val">Raw + tactile</div></div>
+          <div class="id-card-row" style="border-bottom:none;"><div class="id-card-key">Mood</div><div class="id-card-val">Warm, layered</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 AI ANIMATION -->
+<div class="ds-section">
+  <div class="ds-section-label">05 — AI calculation animation</div>
+  <div class="calc-demo">
+    <div class="calc-spinner"></div>
+    <div class="calc-lines">
+      <div class="calc-line"><span class="calc-line-label">Atmosphere signals</span><span class="calc-line-val">Collected ✓</span></div>
+      <div class="calc-line"><span class="calc-line-label">Editorial preferences</span><span class="calc-line-val">Collected ✓</span></div>
+      <div class="calc-line"><span class="calc-line-label">Rejection patterns</span><span class="calc-line-val">Collected ✓</span></div>
+      <div class="calc-line"><span class="calc-line-label">Generating profile</span><span class="calc-line-val active">Processing...</span></div>
+    </div>
+    <div class="calc-hed">BUILDING YOUR PROFILE</div>
+    <div class="typewriter">Warm, layered, tactile — a home that tells a story.</div>
+    <div class="calc-sub">This takes about 3 seconds</div>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-inner">
+    <span class="marquee-item"><span class="marquee-text">Taste profiling for your home</span></span><span class="marquee-item"><span class="marquee-sep">×</span></span>
+    <span class="marquee-item"><span class="marquee-text">AI-powered furniture curation</span></span><span class="marquee-item"><span class="marquee-sep">×</span></span>
+    <span class="marquee-item"><span class="marquee-text">From inspiration to execution</span></span><span class="marquee-item"><span class="marquee-sep">×</span></span>
+    <span class="marquee-item"><span class="marquee-text">Design without the designer price</span></span><span class="marquee-item"><span class="marquee-sep">×</span></span>
+    <span class="marquee-item"><span class="marquee-text">Your space, finally you</span></span><span class="marquee-item"><span class="marquee-sep">×</span></span>
+    <span class="marquee-item"><span class="marquee-text">Taste profiling for your home</span></span><span class="marquee-item"><span class="marquee-sep">×</span></span>
+    <span class="marquee-item"><span class="marquee-text">AI-powered furniture curation</span></span><span class="marquee-item"><span class="marquee-sep">×</span></span>
+    <span class="marquee-item"><span class="marquee-text">From inspiration to execution</span></span><span class="marquee-item"><span class="marquee-sep">×</span></span>
+    <span class="marquee-item"><span class="marquee-text">Design without the designer price</span></span><span class="marquee-item"><span class="marquee-sep">×</span></span>
+    <span class="marquee-item"><span class="marquee-text">Your space, finally you</span></span><span class="marquee-item"><span class="marquee-sep">×</span></span>
+  </div>
+</div>
+
+<!-- 06 SCREEN SAMPLES -->
+<div class="ds-section" style="padding:0;"><div class="ds-section-label" style="padding:20px 28px 16px;">06 — Screen samples</div></div>
+
+<div class="screen-label">Screen 1 — Intro · Cabernet full bleed · cranberry stripe + accent</div>
+<div class="screen-intro">
+  <div class="intro-grain"></div>
+  <div class="intro-stripe"></div>
+  <div class="intro-nav"><div class="intro-nav-wm">ALTERNA.</div><div class="intro-nav-tag">Taste quiz</div></div>
+  <div class="intro-hed-block">
+    <h1 class="intro-headline">FIND YOUR<br>SPACE'S<br><span class="accent">FEEL.</span></h1>
+  </div>
+  <div class="intro-foot">
+    <div>
+      <div class="intro-copy">Answer a few questions. Get a personalized taste profile and curated picks — in 24 hours.</div>
+      <div class="intro-meta">3 minutes · free · no account required</div>
+    </div>
+    <button class="intro-cta">Start the quiz →</button>
+  </div>
+</div>
+
+<div class="screen-label">Screen 2 — Quiz step · cream ground · price-dominant choice cards</div>
+<div class="screen-step">
+  <div class="step-nav">
+    <div class="step-wm">ALTERNA.</div>
+    <div class="progress-dots">
+      <div class="p-dot done"></div><div class="p-dot done"></div><div class="p-dot active"></div>
+      <div class="p-dot"></div><div class="p-dot"></div><div class="p-dot"></div><div class="p-dot"></div>
+    </div>
+  </div>
+  <div class="step-body">
+    <div class="step-eyebrow">Budget · Step 03 of 07</div>
+    <h2 class="step-hed">WHAT'S YOUR <span class="accent">IDEAL RANGE?</span></h2>
+    <p class="step-sub">This helps us calibrate recommendations to what's realistic — not just aspirational.</p>
+    <div class="choice-stack">
+      <div class="choice-card"><div class="choice-card-num">01</div><div class="choice-card-text"><div class="choice-card-name">Starter</div><div class="choice-card-price">Up to $5,000</div><div class="choice-card-desc">Smart picks, accessible brands.</div></div><div class="choice-radio"><div class="choice-radio-dot"></div></div></div>
+      <div class="choice-card selected"><div class="choice-card-num">02</div><div class="choice-card-text"><div class="choice-card-name">Standard</div><div class="choice-card-price">$5,000 – $15,000</div><div class="choice-card-desc">A balance of quality and value.</div></div><div class="choice-radio"><div class="choice-radio-dot"></div></div></div>
+      <div class="choice-card"><div class="choice-card-num">03</div><div class="choice-card-text"><div class="choice-card-name">Premium</div><div class="choice-card-price">$15,000 and above</div><div class="choice-card-desc">Heirloom-quality sourcing.</div></div><div class="choice-radio"><div class="choice-radio-dot"></div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="screen-label">Screen 3 — Profile result · wine stripe · ID card · signal pills</div>
+<div class="screen-result">
+  <div class="result-stripe"><div class="rs1"></div><div class="rs2"></div><div class="rs3"></div><div class="rs4"></div><div class="rs5"></div></div>
+  <div class="result-nav">
+    <div class="step-wm">ALTERNA.</div>
+    <div class="progress-dots">
+      <div class="p-dot done"></div><div class="p-dot done"></div><div class="p-dot done"></div>
+      <div class="p-dot done"></div><div class="p-dot done"></div><div class="p-dot done"></div><div class="p-dot done"></div>
+    </div>
+  </div>
+  <div class="result-body">
+    <div class="result-eyebrow">Your taste profile</div>
+    <h2 class="result-hed">HERE'S WHAT WE <span class="accent">KNOW.</span></h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;">
+      <div class="id-card">
+        <div class="id-card-stamp">
+          <div><div class="id-card-stamp-brand">ALTERNA.</div></div>
+          <div class="id-card-stamp-meta"><div class="id-card-stamp-num">AT 0047</div></div>
+        </div>
+        <div class="id-card-headline" style="padding:10px 14px 8px;"><div class="id-card-headline-text" style="font-size:32px;">THE<br>PROFILE</div></div>
+        <div class="id-card-body">
+          <div class="id-card-photo">
+            <div class="id-card-photo-box"><svg width="20" height="24" viewBox="0 0 20 24" fill="none"><circle cx="10" cy="7" r="5" fill="#E2D8CC"/><path d="M0 22c0-5.523 4.477-10 10-10s10 4.477 10 10" fill="#E2D8CC"/></svg></div>
+            <div class="id-card-photo-label">Photo</div>
+          </div>
+          <div class="id-card-fields">
+            <div class="id-card-row"><div class="id-card-key">Rooms</div><div class="id-card-val">Bedroom, Living</div></div>
+            <div class="id-card-row"><div class="id-card-key">Budget</div><div class="id-card-val">$5K–15K</div></div>
+            <div class="id-card-row"><div class="id-card-key">Texture</div><div class="id-card-val">Raw + tactile</div></div>
+            <div class="id-card-row" style="border-bottom:none;"><div class="id-card-key">Mood</div><div class="id-card-val">Warm, layered</div></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--ash);margin-bottom:10px;">Taste signals</div>
+        <div class="pill-row" style="margin-bottom:24px;">
+          <span class="pill pill-cab">Warm palette</span>
+          <span class="pill pill-cran">Raw + tactile</span>
+          <span class="pill pill-art">Soft light</span>
+          <span class="pill pill-mulled">Layered</span>
+          <span class="pill pill-cream">Investment</span>
+          <span class="pill pill-outline">No rush</span>
+        </div>
+        <button style="width:100%;padding:13px;background:#3D0000;color:#FFF2E6;border:none;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:6px;margin-bottom:8px;">Send my profile →</button>
+        <div style="text-align:center;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--ash);">Ready within 24 hours</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="screen-label">Screen 4 — Confirmation · Mulled Wine deep dark · cranberry "WAY."</div>
+<div class="screen-confirm">
+  <div class="confirm-grain"></div>
+  <div class="confirm-stripe"></div>
+  <div class="confirm-inner">
+    <div class="confirm-nav"><div class="confirm-wm">ALTERNA.</div><div class="confirm-status">Profile received ×</div></div>
+    <div class="confirm-lines">
+      <div class="confirm-line"><span>Taste engine</span><span>Signals collected</span></div>
+      <div class="confirm-line"><span>Curation</span><span>Processing</span></div>
+      <div class="confirm-line"><span>Turnaround</span><span>24 hours</span></div>
+    </div>
+    <div class="confirm-hed">YOUR<br>SPACE<br>IS ON<br>ITS <span class="accent">WAY.</span></div>
+    <div class="confirm-body">The Alterna team has everything they need. Curated picks within 24 hours — no back-and-forth required.</div>
+    <button class="confirm-cta">Open my design hub →</button>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

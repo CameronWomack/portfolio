@@ -670,6 +670,249 @@ The goal is to help translate the inspiration and brand materials into clearer e
         <p>After getting founder feedback on these concepts, I'll refine the prototype based on their direction and begin planning how to validate the approach with potential users. The goal is to ensure the digital experience supports Alterna's service model while creating a compelling taste discovery interaction that users actually want to engage with.</p>
       </div>
     `
+  },
+  {
+    section: "What I Did",
+    number: "6",
+    title: "Mapping the Quiz-to-Purchase Journey",
+    content: `
+      <p>During the meeting with the Alterna founders, a finalized user journey began to take shape. We nailed down key experience features we wanted to build out, defined the major differences between the paid and unpaid user experience, and discussed how to take this project from a "2016 AI tool to a 2026 AI experience." Find the key takeaways from our call below.</p>
+
+      <img src="google_meet.png" alt="Google Meet call with Alterna founders" style="width:100%;max-width:700px;display:block;margin:2rem auto;border-radius:8px;border:1px solid var(--petal);" />
+      <p style="text-align:center;font-style:italic;color:var(--muted);font-size:0.85rem;margin-top:-1rem;margin-bottom:2rem;">Website Design Sync with the Alterna founders</p>
+
+      <h3>Expanding the Taste Signaling Model</h3>
+      <p>The founders loved the direction of the Claude prototype's taste discovery quiz — specifically the focus on non-explicit user selections as the key drivers for generating a customized taste profile. They encouraged me to continue exploring this concept and to introduce new ideas for how users might indirectly signal their preferences to the system. We all agreed that the feeling of being "read" by the platform could become a key source of delight within the Alterna experience.</p>
+
+      <h3>Encouraging Engagement After Onboarding</h3>
+      <p>We also discussed the potential drop-off that could occur after users complete the initial onboarding quiz but aren't yet ready to pay for Alterna's services. One idea that emerged was allowing users to export or share their generated taste profile — particularly through social media. This could both extend engagement beyond the initial session and create opportunities for organic discovery of Alterna online.</p>
+
+      <h3>Clarifying the Quiz-to-Purchase Journey</h3>
+      <p>The most impactful outcome of the conversation was aligning on a clearer end-to-end user journey. We discussed shifting the primary entry point of the site away from booking a consultation call and toward beginning the taste discovery quiz. From there, we mapped how the generated taste profile could differentiate the experience for free and paid users, while identifying opportunities to collect contact information from both groups.</p>
+
+      <!-- User Journey Diagram -->
+      <div style="margin:2.5rem auto;max-width:100%;overflow-x:auto;">
+        <svg viewBox="0 0 1140 390" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:700px;border-radius:10px;border:1px solid var(--petal);background:#faf8f4;padding:1.25rem;box-sizing:border-box;">
+          <defs>
+            <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L8,3 z" fill="#555" />
+            </marker>
+          </defs>
+
+          <!-- Section labels -->
+          <text x="700" y="26" font-size="8.5" fill="#aaa" font-family="Manrope, sans-serif" font-weight="700" letter-spacing="0.1em">PAID PATH</text>
+          <text x="700" y="284" font-size="8.5" fill="#aaa" font-family="Manrope, sans-serif" font-weight="700" letter-spacing="0.1em">FREE PATH</text>
+
+          <!-- ── MAIN SPINE (vertically centered at y=178) ── -->
+
+          <!-- Homepage -->
+          <rect x="16" y="157" width="100" height="42" rx="21" fill="#f0ece8" stroke="#c9bdb5" stroke-width="1.5"/>
+          <text x="66" y="183" text-anchor="middle" font-size="11.5" font-family="Manrope, sans-serif" font-weight="500" fill="#4a3f3a">Homepage</text>
+
+          <!-- → Taste quiz -->
+          <line x1="116" y1="178" x2="148" y2="178" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+          <rect x="150" y="153" width="124" height="50" rx="7" fill="#7B6BA8" stroke="#7B6BA8" stroke-width="1.5"/>
+          <text x="212" y="174" text-anchor="middle" font-size="11.5" font-family="Manrope, sans-serif" font-weight="600" fill="#fff">Taste quiz</text>
+          <text x="212" y="191" text-anchor="middle" font-size="9" font-family="Manrope, sans-serif" fill="rgba(255,255,255,0.8)">Scope · visual · editorial</text>
+
+          <!-- → Profile generated -->
+          <line x1="274" y1="178" x2="306" y2="178" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+          <rect x="308" y="153" width="134" height="50" rx="7" fill="#f0ece8" stroke="#7BAE94" stroke-width="2"/>
+          <text x="375" y="174" text-anchor="middle" font-size="11.5" font-family="Manrope, sans-serif" font-weight="600" fill="#4a3f3a">Profile generated</text>
+          <text x="375" y="191" text-anchor="middle" font-size="9" font-family="Manrope, sans-serif" fill="#7BAE94">Report card + signals</text>
+
+          <!-- → Email capture -->
+          <line x1="442" y1="178" x2="474" y2="178" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+          <rect x="476" y="153" width="124" height="50" rx="7" fill="#f0ece8" stroke="#7BAE94" stroke-width="2"/>
+          <text x="538" y="174" text-anchor="middle" font-size="11.5" font-family="Manrope, sans-serif" font-weight="600" fill="#4a3f3a">Email capture</text>
+          <text x="538" y="191" text-anchor="middle" font-size="9" font-family="Manrope, sans-serif" fill="#7BAE94">Save + return access</text>
+
+          <!-- → Decision diamond -->
+          <line x1="600" y1="178" x2="628" y2="178" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+          <polygon points="655,155 688,178 655,201 622,178" fill="#f0ece8" stroke="#c9bdb5" stroke-width="1.5"/>
+          <text x="655" y="174" text-anchor="middle" font-size="8.5" font-family="Manrope, sans-serif" font-weight="600" fill="#4a3f3a">Pay for</text>
+          <text x="655" y="186" text-anchor="middle" font-size="8.5" font-family="Manrope, sans-serif" font-weight="600" fill="#4a3f3a">service?</text>
+
+          <!-- ── YES branch (up to y=108) ── -->
+          <text x="706" y="138" text-anchor="middle" font-size="9.5" fill="#888" font-family="Manrope, sans-serif">yes</text>
+          <line x1="655" y1="155" x2="655" y2="108" stroke="#555" stroke-width="1.5"/>
+          <line x1="655" y1="108" x2="700" y2="108" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <!-- Purchase -->
+          <rect x="702" y="84" width="96" height="48" rx="24" fill="#E8887A" stroke="#E8887A" stroke-width="1.5"/>
+          <text x="750" y="113" text-anchor="middle" font-size="11.5" font-family="Manrope, sans-serif" font-weight="600" fill="#fff">Purchase</text>
+
+          <!-- → Team + user hub -->
+          <line x1="798" y1="108" x2="830" y2="108" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+          <rect x="832" y="84" width="140" height="48" rx="7" fill="#f0ece8" stroke="#E8887A" stroke-width="2"/>
+          <text x="902" y="105" text-anchor="middle" font-size="11.5" font-family="Manrope, sans-serif" font-weight="600" fill="#4a3f3a">Team + user hub</text>
+          <text x="902" y="121" text-anchor="middle" font-size="9" font-family="Manrope, sans-serif" fill="#E8887A">Collaborate + refine</text>
+
+          <!-- → Mood board delivered -->
+          <line x1="972" y1="108" x2="1004" y2="108" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+          <rect x="1006" y="78" width="118" height="60" rx="7" fill="#f0ece8" stroke="#7BAE94" stroke-width="2"/>
+          <text x="1065" y="100" text-anchor="middle" font-size="11.5" font-family="Manrope, sans-serif" font-weight="600" fill="#4a3f3a">Mood board</text>
+          <text x="1065" y="116" text-anchor="middle" font-size="11.5" font-family="Manrope, sans-serif" font-weight="600" fill="#4a3f3a">delivered</text>
+          <text x="1065" y="130" text-anchor="middle" font-size="9" font-family="Manrope, sans-serif" fill="#7BAE94">Sourcing dock</text>
+          <text x="1065" y="142" text-anchor="middle" font-size="9" font-family="Manrope, sans-serif" fill="#7BAE94">+ visual</text>
+
+          <!-- ── NO branch (down to y=248) ── -->
+          <text x="706" y="222" text-anchor="middle" font-size="9.5" fill="#888" font-family="Manrope, sans-serif">no</text>
+          <line x1="655" y1="201" x2="655" y2="248" stroke="#555" stroke-width="1.5"/>
+          <line x1="655" y1="248" x2="700" y2="248" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <!-- Keep profile -->
+          <rect x="702" y="224" width="120" height="48" rx="7" fill="#f0ece8" stroke="#7BAE94" stroke-width="2"/>
+          <text x="762" y="245" text-anchor="middle" font-size="11.5" font-family="Manrope, sans-serif" font-weight="600" fill="#4a3f3a">Keep profile</text>
+          <text x="762" y="261" text-anchor="middle" font-size="9" font-family="Manrope, sans-serif" fill="#7BAE94">Free, always live</text>
+
+          <!-- → View · edit · share -->
+          <line x1="822" y1="248" x2="854" y2="248" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+          <rect x="856" y="224" width="130" height="48" rx="7" fill="#f0ece8" stroke="#7BAE94" stroke-width="2"/>
+          <text x="921" y="245" text-anchor="middle" font-size="11.5" font-family="Manrope, sans-serif" font-weight="600" fill="#4a3f3a">View · edit · share</text>
+          <text x="921" y="261" text-anchor="middle" font-size="9" font-family="Manrope, sans-serif" fill="#7BAE94">Return anytime</text>
+
+          <!-- ── Legend ── -->
+          <rect x="16" y="345" width="11" height="11" rx="2" fill="#7B6BA8"/>
+          <text x="33" y="355" font-size="9" fill="#888" font-family="Manrope, sans-serif">Quiz / user input</text>
+          <rect x="160" y="345" width="11" height="11" rx="2" fill="#f0ece8" stroke="#E8887A" stroke-width="1.5"/>
+          <text x="177" y="355" font-size="9" fill="#888" font-family="Manrope, sans-serif">Paid service</text>
+          <rect x="276" y="345" width="11" height="11" rx="2" fill="#f0ece8" stroke="#7BAE94" stroke-width="1.5"/>
+          <text x="293" y="355" font-size="9" fill="#888" font-family="Manrope, sans-serif">Output / deliverable</text>
+          <rect x="430" y="345" width="11" height="11" rx="2" fill="#f0ece8" stroke="#c9bdb5" stroke-width="1.5"/>
+          <text x="447" y="355" font-size="9" fill="#888" font-family="Manrope, sans-serif">Entry / neutral state</text>
+          <line x1="580" y1="350" x2="608" y2="350" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+          <text x="616" y="355" font-size="9" fill="#888" font-family="Manrope, sans-serif">Happy path</text>
+        </svg>
+        <p style="text-align:center;font-style:italic;color:var(--muted);font-size:0.85rem;margin-top:0.75rem;">User journey — quiz to purchase, free and paid paths</p>
+      </div>
+
+      <p>A few days after the alignment meeting, one of the Alterna founders shared a snippet from a conversation she'd had with ChatGPT about the product direction. The conversation centered on ways to enhance the Alterna taste engine further — pushing taste profile curation to align more closely with a user's implicit preferences rather than explicit statements. One of the key points was a reframe of Alterna's primary positioning:</p>
+
+      <p style="margin:1.5rem auto;max-width:600px;padding:1.25rem 1.75rem;background:var(--cream);border-left:3px solid var(--lavender);font-style:italic;text-align:center;">"The product is not: <strong>design output.</strong> The product is: <strong>decision clarity.</strong> That is the magic."</p>
+
+      <p>While that framing resonated with parts of the user journey we had just mapped, it didn't fully capture the value of the system we were imagining. Because Alterna allows users to interact with the platform over time — continuously refining their taste profiles and teaching the taste engine about their preferences — the output feels like more than just decision clarity. <span style="color:var(--lavender);">Instead, it becomes a growing record of a user's tastes, instincts, and practical needs that can ultimately guide a broader design strategy for their space.</span></p>
+
+      <p>To push back on ChatGPT's framing, I worked with Claude to create <a href="https://docs.google.com/document/d/1qSeiQJAysjHH4csVxA-tx2uJPE_TiYs7/edit?rtpof=true&sd=true&tab=t.0" target="_blank" style="color:var(--lavender);text-decoration:underline;">a document that highlights the importance of the taste profile in the tool</a>. The document outlines how taste signals are captured, how the living profile is used by both users and the Alterna team, and how the profile functions as a shareable artifact — not just a design brief.</p>
+
+      <div style="display:flex;gap:2rem;align-items:flex-start;margin:2rem 0;flex-wrap:wrap;">
+        <div style="flex:1;min-width:280px;">
+          <p>One of my favorite ideas from the document was the suggestion that user pain points shouldn't just be collected for the team's internal reference, but actually reflected back in Alterna's output to help guide decision-making. For example, if a user flags "visualizing the finished result" as a challenge, the system could prioritize room renders in the output. If they flag "committing to a purchase," the sourcing section might include additional framing that builds confidence around those decisions.</p>
+          <p><span style="color:var(--lavender);">It creates a moment where the platform demonstrates that it's actually listening.</span> More importantly, it turns the system's recommendations into something that feels genuinely personalized — not just based on taste, but also on the practical hurdles a user is trying to overcome while designing their space.</p>
+        </div>
+        <img src="screenshot.png" alt="iMessage thread sharing the Alterna taste profile document" style="width:260px;border-radius:12px;border:1px solid var(--petal);flex-shrink:0;" />
+      </div>
+
+      <div style="margin-top:4rem;padding-top:2rem;border-top:2px solid var(--lavender);">
+        <h2 style="font-size:1.8rem;font-weight:600;color:var(--lavender);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:1.5rem;">Next Steps</h2>
+        <p>With the user journey aligned and the taste profile's role clarified, the next question is: <strong>how do we design for the feeling of being "read"?</strong> The implicit taste signaling model needs to be pressure-tested — specifically whether non-explicit interactions (visual reactions, atmosphere choices) can produce a taste profile that feels meaningfully personalized without requiring users to articulate what they want.</p>
+        <p>I'll begin translating the agreed-upon user journey into a more refined prototype and explore what the taste profile output actually looks like to the user — both as a functional artifact and as something they'd want to share.</p>
+      </div>
+    `
+  },
+  {
+    section: "What I Did",
+    number: "7",
+    title: "Iterating the Prototype for Founder Meeting 2",
+    content: `
+      <p>After our conversation about the taste profile artifact and the broader user journey, I wanted to start exploring how these ideas might come together in the product experience. Continuing to work in Claude, I began translating the concepts we discussed — reworking taste discovery, taste profiles as shareable artifacts, and integrated designer collaboration — into a rough interaction flow.</p>
+
+      <p>Note: before I began this iteration of the prototype, I upgraded to the paid plan of Claude 🥰, and began working in the Claude desktop app. It's been mostly great so far, but for some reason it caused me to lose all of the pictures that the web version of the prototype had 😅. I'm still working on getting those back, but for now I've had Claude draw its own weird AI versions of rooms.</p>
+
+      <video
+        controls
+        preload="metadata"
+        playsinline
+        style="width:100%;max-width:720px;display:block;margin:2rem auto;border-radius:8px;border:1px solid var(--petal);background:#000;">
+        <source src="claude_prototype_2.mp4" type="video/mp4">
+        <source src="claude_prototype_2.mov" type="video/quicktime">
+        <p style="color:var(--lavender);text-align:center;padding:2rem;">Your browser does not support video playback.</p>
+      </video>
+      <p style="text-align:center;font-style:italic;color:var(--muted);font-size:0.85rem;margin-top:-1rem;margin-bottom:2rem;">Second iteration of Claude prototype, exploring enhancements of the taste signaling quiz and the introduction of the free vs paid experience</p>
+
+      <div style="margin-top:4rem;padding-top:2rem;border-top:2px solid var(--lavender);">
+        <h2 style="font-size:1.8rem;font-weight:600;color:var(--lavender);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:1.5rem;">Next Steps</h2>
+        <p>With this prototype in place, the next step is to review the updates with the founders and gather feedback on how well it aligns with the service they want Alterna to provide. The key hypotheses to pressure-test in the next session:</p>
+        <ul style="margin-left:1.5rem;margin-bottom:1.5rem;">
+          <li><strong>Refining the Taste Discovery Flow</strong>: Does the updated interaction feel intuitive and aligned with Alterna's editorial, personality-driven approach — or does it need to go further?</li>
+          <li><strong>Evaluating the Taste Profile Artifact</strong>: Does the editable taste profile function convincingly as a living record of the user's aesthetic preferences, and does a shareable version feel like something users would actually want to post?</li>
+          <li><strong>Connecting Taste Discovery to Designer Collaboration</strong>: How and when should Alterna designers enter the experience, and can the platform capture additional taste signal data through that collaboration?</li>
+        </ul>
+        <p>The goal of this next session is to validate the direction of the experience model and identify the areas where the design should evolve next.</p>
+      </div>
+    `
+  },
+  {
+    section: "What I Did",
+    number: "8",
+    title: "Synthesizing Meeting 2 Feedback",
+    content: `
+      <p>In my second meeting with the Alterna founders, we reviewed the latest prototype and aligned on a few areas that still need deeper exploration. The conversation focused on pushing the taste discovery experience further, thinking through how communication between users and designers should work, and revisiting the overall look and feel of the product. More detailed takeaways from the discussion are outlined below:</p>
+
+      <h3>How To Push Taste Signaling Even Further</h3>
+      <p>Even after several iterations, we all agree that the current version of the taste signaling quiz still feels too close to a standard personality quiz. The goal for this interaction is much higher. The quiz should leave users feeling that Alterna truly understands their taste on a deeper level, and might be able to speak to their tastes beyond interior design.</p>
+      <p>To get there, we agreed that the next step is to push beyond familiar quiz patterns and explore more dynamic, signal-driven interactions. This will likely involve rethinking how we capture user preferences — moving away from explicit selections and toward more nuanced inputs that better reflect instinct, emotion, and behavior.</p>
+
+      <h3>Integrated vs Flexible Customer Communication</h3>
+      <p>Currently, the Alterna team communicates with clients in a very flexible way, primarily through text, email, and phone, depending on what feels easiest for the user. In the latest prototype, I explored a more integrated approach by introducing a centralized customer profile where communication with paid users could be captured within the platform. This would allow insights from those interactions to be incorporated into the user's evolving taste profile.</p>
+      <p>The founders raised a valid concern that requiring communication to happen within the platform could introduce friction and make the experience feel less convenient. As a result, we discussed maintaining flexibility by supporting both on- and off-platform communication, while exploring lightweight ways to bring key insights from offline interactions back into the system — for example, through uploaded notes.</p>
+
+      <h3>Refining the Look and Feel</h3>
+      <p>The founders also called out that the current prototype wasn't quite working visually. It felt a bit too flat and didn't fully capture the fun, editorial, and modern tone they're aiming for with Alterna. This feedback aligned with my own sense that the experience hadn't found its visual voice yet. To start pushing this further, I began pulling together a Pinterest board with references that feel more in line with the vision for the product, leaning into bold typography, editorial layouts, and a more expressive use of space and color. Once I review this with the team, I'll start translating those references into the prototype.</p>
+      <p>This is the part of the next phase that I'm most excited about. I've watched a few YouTube videos about how Claude can assist in building and implementing a design system in prototypes, and I'm excited to explore how far I can push that skill in this project.</p>
+
+      <video
+        controls
+        preload="metadata"
+        playsinline
+        style="width:100%;max-width:720px;display:block;margin:2rem auto;border-radius:8px;border:1px solid var(--petal);background:#000;">
+        <source src="pinterest_screen_recording.mp4" type="video/mp4">
+        <source src="pinterest_screen_recording.mov" type="video/quicktime">
+        <p style="color:var(--lavender);text-align:center;padding:2rem;">Your browser does not support video playback.</p>
+      </video>
+      <p style="text-align:center;font-style:italic;color:var(--muted);font-size:0.85rem;margin-top:-1rem;margin-bottom:2rem;">Pinterest board — visual references for Alterna's editorial direction</p>
+
+      <div style="margin-top:4rem;padding-top:2rem;border-top:2px solid var(--lavender);">
+        <h2 style="font-size:1.8rem;font-weight:600;color:var(--lavender);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:1.5rem;">Next Steps</h2>
+        <p>Three clear threads to pull on coming out of this meeting: <strong>(1) How do we redesign the taste signaling interaction to feel less like a quiz and more like a genuine read?</strong> (2) What's the lightest-weight way to bring off-platform designer communication back into the taste profile without adding friction? (3) Can Claude help build and implement a design system that gives the prototype the editorial, expressive visual voice Alterna is looking for?</p>
+        <p>The Pinterest board is the starting point for the visual direction — once I've reviewed it with the founders, I'll begin translating those references into the prototype with Claude's help on the design system side.</p>
+      </div>
+    `
+  },
+  {
+    section: "What I Did",
+    number: "9",
+    title: "Building a Design System with Claude",
+    content: `
+      <p>After my last meeting with the founders, I was excited to start pushing the visual direction of the prototype further. I spent some time exploring how Claude could support visual design work, watching a few tutorials and getting a sense of how it could help with building out a more cohesive design system.</p>
+
+      <p>To get started, I shared the Pinterest board I had created with Claude and used it as a foundation for the design direction. From there, I prompted Claude to ask clarifying questions about the intended look and feel, then begin curating a design language, including color palette, typography, and reusable components. After a few rounds of back-and-forth, it produced an initial direction for the design system, along with previews of how key screens might look with those styles applied.</p>
+
+      <p>As I iterated on those outputs, I started to notice things getting messy. New feedback was getting layered on top of older explorations, and the results began to feel inconsistent and hard to control. After a few attempts to course-correct, I decided to reset and approach it differently. This time, I explicitly used Claude's <code style="background:var(--cream);padding:0.1em 0.4em;border-radius:3px;font-size:0.9em;">/frontend-design</code> skill, which led to much cleaner outputs and made it easier to iterate in a more structured way. The results felt more aligned with the feedback I was giving and much closer to a usable design direction.</p>
+
+      <p>After applying the skill, I was able to generate a few design system directions that felt much more aligned with what the founders were looking for — editorial, bold, and fresh. I selected the two strongest options and shared them with the team ahead of a quick follow-up call. During that call, I gathered their feedback on each direction, which gave me a clearer sense of what was working and what still needed refinement. I then brought that feedback back into Claude and iterated again, which led to the version of the design system shown below.</p>
+
+      <div style="margin:2.5rem auto;max-width:100%;">
+        <iframe
+          src="alterna-design-system-v8.html"
+          style="width:100%;height:640px;border-radius:8px;border:1px solid var(--petal);display:block;"
+          title="Alterna Design System v8"
+          loading="lazy">
+        </iframe>
+        <p style="text-align:center;font-style:italic;color:var(--muted);font-size:0.85rem;margin-top:0.75rem;">Alterna Design System v8 — live artifact built with Claude</p>
+      </div>
+
+      <h3>What I Learned About Working With Claude on Visual Design</h3>
+      <p>Working through this phase with Claude gave me a much better sense of where it's actually helpful in visual design work. Claude is a great tool for quickly generating directions and helping me explore different interpretations of the same inspiration, especially in this phase where the look and feel of the final tool was still in flux. At the same time, it became clear that the quality of the output depended heavily on how structured I was in guiding it. When my prompts were vague or iterative feedback wasn't clearly reset, the results got messy pretty quickly.</p>
+
+      <p>The biggest shift for me was treating Claude less like a tool that produces finished designs and more like something I use to explore and pressure-test visual directions. Once I started approaching it that way, and using more intentional inputs and constraints — it became much easier to move toward a cohesive design system that actually reflected the direction the founders and I were aligning on.</p>
+
+      <div style="margin-top:4rem;padding-top:2rem;border-top:2px solid var(--lavender);">
+        <h2 style="font-size:1.8rem;font-weight:600;color:var(--lavender);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:1.5rem;">Next Steps</h2>
+        <p>I still need to prepare and schedule a working session with the founders focused on pushing the taste discovery experience further. <strong>The goal for that workshop will be to step back and collaboratively explore how we can move beyond the current quiz format and make the interaction feel more unique and impactful.</strong></p>
+        <p>In parallel, I'll continue refining the design system and begin applying it more systematically across the prototype — testing whether the editorial visual language holds up across the different interaction states and screen types the Alterna experience requires.</p>
+      </div>
+    `
   }
 ];
 
