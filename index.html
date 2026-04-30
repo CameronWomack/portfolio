@@ -74,42 +74,150 @@ footer{padding:5rem 3.5rem 3rem;max-width:1160px;margin:0 auto}
 .d2{animation-delay:0.2s}
 
 /* ── Password Gate ── */
+@keyframes pw-fade-up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-7px)}60%{transform:translateX(7px)}80%{transform:translateX(-3px)}}
+
 #pw-gate{
   position:fixed;inset:0;z-index:999;
   background:var(--plum);
   display:flex;align-items:center;justify-content:center;
-  transition:opacity 0.5s ease;
+  transition:opacity 0.6s cubic-bezier(0.4,0,0.2,1);
+  /* subtle noise texture via SVG data URI */
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+#pw-gate::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 60% at 50% 40%, rgba(92,50,101,0.35) 0%, transparent 70%);
+  pointer-events:none;
 }
 #pw-gate.unlocked{opacity:0;pointer-events:none;}
-.pw-box{display:flex;flex-direction:column;align-items:center;gap:1.5rem;text-align:center;padding:2rem;}
-.pw-logo{font-family:var(--man);font-size:0.8rem;font-weight:600;letter-spacing:0.1em;color:var(--rose);text-transform:uppercase;margin-bottom:0.25rem;}
-.pw-heading{font-family:var(--man);font-size:clamp(1.8rem,4vw,3rem);font-weight:700;letter-spacing:-0.04em;line-height:1;color:var(--ivory);}
-.pw-heading em{font-family:var(--lora);font-weight:400;font-style:italic;color:var(--muted);letter-spacing:-0.02em;}
-.pw-sub{font-size:0.82rem;color:rgba(246,241,234,0.35);font-weight:400;}
-.pw-row{display:flex;gap:0.65rem;align-items:center;margin-top:0.25rem;}
-.pw-input{font-family:var(--man);font-size:0.88rem;background:rgba(246,241,234,0.07);border:1px solid rgba(234,216,210,0.18);color:var(--ivory);padding:0.7rem 1.25rem;border-radius:999px;outline:none;width:210px;letter-spacing:0.04em;transition:border-color 0.2s;}
-.pw-input::placeholder{color:rgba(246,241,234,0.22);}
-.pw-input:focus{border-color:rgba(234,216,210,0.45);}
-.pw-input.error{border-color:var(--rose);animation:shake 0.35s ease;}
-.pw-btn{font-family:var(--man);font-size:0.8rem;font-weight:600;letter-spacing:0.04em;background:var(--ivory);color:var(--plum);border:none;padding:0.7rem 1.4rem;border-radius:999px;cursor:pointer;transition:background 0.2s,transform 0.15s;white-space:nowrap;}
-.pw-btn:hover{background:var(--petal);}
-.pw-btn:active{transform:scale(0.97);}
-.pw-error{font-size:0.75rem;color:var(--rose);opacity:0;transition:opacity 0.2s;min-height:1em;}
+
+.pw-box{
+  position:relative;
+  display:flex;flex-direction:column;align-items:center;
+  gap:0;text-align:center;
+  background:rgba(246,241,234,0.04);
+  border:1px solid rgba(234,216,210,0.1);
+  border-radius:16px;
+  padding:3.5rem 3.5rem 3rem;
+  width:min(440px, calc(100vw - 3rem));
+  backdrop-filter:blur(12px);
+  box-shadow:0 32px 80px rgba(0,0,0,0.35), inset 0 1px 0 rgba(246,241,234,0.08);
+  animation:pw-fade-up 0.65s cubic-bezier(0.22,1,0.36,1) both;
+  animation-delay:0.1s;
+}
+
+/* top accent line */
+.pw-box::before{
+  content:'';
+  position:absolute;top:-1px;left:50%;transform:translateX(-50%);
+  width:48px;height:2px;
+  background:linear-gradient(90deg, transparent, var(--grape), transparent);
+  border-radius:999px;
+}
+
+.pw-eyebrow{
+  font-family:var(--man);font-size:0.65rem;font-weight:600;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--rose);margin-bottom:1.75rem;
+  display:flex;align-items:center;gap:0.6rem;
+}
+.pw-eyebrow::before,.pw-eyebrow::after{
+  content:'';display:block;width:20px;height:1px;background:var(--rose);opacity:0.4;
+}
+
+.pw-heading{
+  font-family:var(--man);
+  font-size:clamp(1.7rem,4vw,2.6rem);
+  font-weight:700;letter-spacing:-0.04em;line-height:1;
+  color:var(--ivory);margin-bottom:0.6rem;
+}
+.pw-heading em{
+  font-family:var(--lora);font-weight:400;font-style:italic;
+  color:rgba(155,127,160,0.85);letter-spacing:-0.02em;
+}
+
+.pw-sub{
+  font-size:0.78rem;font-weight:400;line-height:1.6;
+  color:rgba(246,241,234,0.3);
+  margin-bottom:2.25rem;
+}
+
+.pw-divider{
+  width:100%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(234,216,210,0.12),transparent);
+  margin-bottom:2.25rem;
+}
+
+.pw-field-wrap{
+  width:100%;display:flex;flex-direction:column;gap:0.65rem;
+  align-items:center;
+}
+
+.pw-input{
+  font-family:var(--man);font-size:0.88rem;font-weight:400;
+  width:100%;
+  background:rgba(246,241,234,0.05);
+  border:1px solid rgba(234,216,210,0.15);
+  color:var(--ivory);
+  padding:0.85rem 1.25rem;
+  border-radius:10px;
+  outline:none;
+  letter-spacing:0.06em;
+  transition:border-color 0.25s, background 0.25s, box-shadow 0.25s;
+  text-align:center;
+}
+.pw-input::placeholder{color:rgba(246,241,234,0.2);letter-spacing:0.06em;}
+.pw-input:focus{
+  border-color:rgba(155,127,160,0.5);
+  background:rgba(246,241,234,0.08);
+  box-shadow:0 0 0 3px rgba(92,50,101,0.2);
+}
+.pw-input.error{border-color:var(--rose);box-shadow:0 0 0 3px rgba(200,152,152,0.15);animation:shake 0.4s ease;}
+
+.pw-btn{
+  font-family:var(--man);font-size:0.78rem;font-weight:600;
+  letter-spacing:0.08em;text-transform:uppercase;
+  width:100%;
+  background:var(--ivory);color:var(--plum);
+  border:none;padding:0.85rem 1.4rem;
+  border-radius:10px;
+  cursor:pointer;
+  transition:background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow:0 2px 12px rgba(0,0,0,0.25);
+}
+.pw-btn:hover{background:var(--petal);box-shadow:0 4px 20px rgba(0,0,0,0.3);}
+.pw-btn:active{transform:scale(0.98);}
+
+.pw-error{
+  font-size:0.73rem;font-weight:400;
+  color:var(--rose);
+  opacity:0;transition:opacity 0.2s;
+  min-height:1.1em;margin-top:0.25rem;
+  letter-spacing:0.01em;
+}
 .pw-error.visible{opacity:1;}
-@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+.pw-footer{
+  margin-top:2rem;
+  font-size:0.65rem;font-weight:500;letter-spacing:0.06em;
+  color:rgba(246,241,234,0.15);text-transform:uppercase;
+}
 </style>
 </head>
 <body>
 <div id="pw-gate">
   <div class="pw-box">
-    <div class="pw-logo">Cameron Womack</div>
-    <h1 class="pw-heading">This site is<br><em>password protected.</em></h1>
-    <p class="pw-sub">Enter the password to view the portfolio.</p>
-    <div class="pw-row">
-      <input class="pw-input" id="pw-input" type="password" placeholder="Password" autocomplete="off">
-      <button class="pw-btn" id="pw-btn">Enter →</button>
+    <div class="pw-eyebrow">Cameron Womack</div>
+    <h1 class="pw-heading">Portfolio is<br><em>private.</em></h1>
+    <p class="pw-sub">This work is shared selectively.<br>Enter the password to continue.</p>
+    <div class="pw-divider"></div>
+    <div class="pw-field-wrap">
+      <input class="pw-input" id="pw-input" type="password" placeholder="Enter password" autocomplete="off">
+      <button class="pw-btn" id="pw-btn">View Portfolio</button>
+      <p class="pw-error" id="pw-error">Incorrect password — try again.</p>
     </div>
-    <p class="pw-error" id="pw-error">Incorrect password. Try again.</p>
+    <div class="pw-footer">Senior Experience Designer · New York</div>
   </div>
 </div>
 
