@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cameron Womack</title>
+<title>Cameron Womack — Senior Experience Designer</title>
+<meta name="description" content="Senior Experience Designer specializing in complex workflows, data-heavy interfaces, and AI-assisted design. Currently at Moody's Analytics.">
+<meta property="og:title" content="Cameron Womack — Senior Experience Designer">
+<meta property="og:description" content="Portfolio of Cameron Womack — enterprise UX, AI-native tools, and data-heavy interface design.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cameronwomack.github.io/portfolio">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Lora:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
 <style>
@@ -16,30 +21,53 @@ nav{ position:fixed;top:0;left:0;right:0;z-index:100; padding:1.4rem 3.5rem; dis
 .nav-links{display:flex;gap:2.5rem;list-style:none}
 .nav-links a{ font-size:0.75rem;font-weight:500; letter-spacing:0.08em;text-transform:uppercase; color:var(--muted);text-decoration:none;transition:color 0.2s;}
 .nav-links a:hover{color:var(--plum)}
-.hero{ padding:5.5rem 3.5rem 0; max-width:1160px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:4rem;}
-.hero-h1{ font-family:var(--man); font-size:clamp(3rem,6vw,6rem); font-weight:700; line-height:0.95; letter-spacing:-0.04em; color:var(--plum);}
+.hero{ padding:5.5rem 3.5rem 0; max-width:1160px; margin:0 auto;}
+.hero-text{ margin-bottom:2.5rem;}
+.hero-h1{ font-family:var(--man); font-size:clamp(3rem,7vw,7rem); font-weight:700; line-height:0.92; letter-spacing:-0.04em; color:var(--plum); margin-bottom:1.25rem;}
 .hero-h1 .serif-it{ font-family:var(--lora); font-weight:400;font-style:italic; letter-spacing:-0.02em; color:var(--grape);}
-.carousel-wrap{ position:relative; padding-left:2.5rem; border-left:1px solid var(--petal); height:340px; overflow:hidden;}
-.carousel-line{ position:absolute; left:-1px;width:2px; background:var(--grape); border-radius:2px; transition:top 0.55s cubic-bezier(0.76,0,0.24,1), height 0.55s cubic-bezier(0.76,0,0.24,1); pointer-events:none; z-index:2;}
-.carousel-track{ position:absolute; top:0;left:2.5rem;right:0; transition:transform 0.55s cubic-bezier(0.76,0,0.24,1); will-change:transform;}
-.metric-item{ padding:0 0; cursor:pointer; user-select:none; display:flex; align-items:center; gap:1.5rem;}
-.metric-num{ font-family:var(--man); font-size:clamp(2.8rem,5vw,4.5rem); font-weight:700; letter-spacing:-0.05em; line-height:1; transition:color 0.4s, opacity 0.4s, font-size 0.4s; flex-shrink:0;}
-.metric-num sup{ font-size:0.42em;font-weight:600;vertical-align:super;}
-.metric-label{ font-size:0.8rem;font-weight:400;line-height:1.4; transition:color 0.4s, opacity 0.4s; text-align:left; max-width:160px;}
-.metric-item.state-active .metric-num { color:var(--plum); opacity:1; font-size:clamp(2.8rem,5vw,4.5rem); }
-.metric-item.state-active .metric-label { color:var(--muted); opacity:1; display:block; }
-.metric-item.state-ghost .metric-num { color:var(--plum); opacity:0.18; font-size:clamp(1.6rem,2.8vw,2.5rem); }
-.metric-item.state-ghost .metric-label { display:none; }
+.hero-sub{ font-family:var(--lora); font-size:clamp(1.15rem,1.8vw,1.5rem); font-weight:400; font-style:italic; color:var(--grape); line-height:1.5; letter-spacing:-0.01em; max-width:780px;}
+
+/* Metric stat bar — full width, hover to highlight */
+.carousel-section{ border-top:1px solid var(--petal); padding-top:2.5rem; margin-top:2.5rem;}
+.carousel-eyebrow{ font-size:0.68rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:1.75rem;}
+.metric-bar{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:0;}
+.metric-stat{
+  padding:1.5rem 2rem 1.5rem 0;
+  border-right:1px solid var(--petal);
+  cursor:default;
+  transition:opacity 0.3s ease;
+}
+.metric-stat:last-child{ border-right:none; padding-right:0;}
+.metric-stat:not(:first-child){ padding-left:2rem;}
+/* Dim siblings on hover of the bar */
+.metric-bar:hover .metric-stat{ opacity:0.2; }
+.metric-bar:hover .metric-stat:hover{ opacity:1; }
+.metric-big-num{
+  font-family:var(--man);
+  font-size:clamp(2.8rem,5vw,5rem);
+  font-weight:700;
+  letter-spacing:-0.05em;
+  line-height:1;
+  color:var(--plum);
+  margin-bottom:0.4rem;
+}
+.metric-big-num sup{ font-size:0.38em; font-weight:600; vertical-align:super;}
+.metric-big-label{
+  font-size:0.78rem;
+  font-weight:400;
+  color:var(--muted);
+  line-height:1.4;
+}
 .work{ padding:3.5rem 3.5rem 6rem; max-width:1160px;margin:0 auto;}
 .section-header{ display:flex;align-items:center; margin-bottom:2rem;padding-bottom:1rem; border-bottom:1px solid var(--petal);}
 .section-label{ font-size:0.7rem;font-weight:600; letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);}
-.work-item{ display:grid; grid-template-columns:40px 1fr auto 40px; align-items:center;gap:2rem; padding:1.6rem 0;border-bottom:1px solid var(--petal); text-decoration:none;color:inherit;cursor:pointer; transition:gap 0.3s cubic-bezier(0.34,1.56,0.64,1);}
+.work-item{ display:grid; grid-template-columns:40px 1fr 40px; align-items:center;gap:2rem; padding:1.6rem 0;border-bottom:1px solid var(--petal); text-decoration:none;color:inherit;cursor:pointer; transition:gap 0.3s cubic-bezier(0.34,1.56,0.64,1);}
 .work-item:hover{gap:2.5rem}
 .work-num{ font-family:var(--lora);font-size:0.78rem; font-style:italic;color:var(--rose);}
 .work-title{ font-family:var(--man); font-size:clamp(1.4rem,2.8vw,2.1rem); font-weight:600;letter-spacing:-0.03em;line-height:1.1; color:var(--plum);transition:color 0.2s;}
+.work-title-wrap{ display:flex; flex-direction:column; gap:0.35rem;}
+.work-oneliner{ font-size:0.78rem; font-weight:400; color:var(--muted); letter-spacing:0.01em;}
 .work-item:hover .work-title{color:var(--grape)}
-.work-chips{display:flex;gap:0.4rem;flex-wrap:wrap;justify-content:flex-end}
-.chip{ font-size:0.65rem;font-weight:500; letter-spacing:0.05em;text-transform:uppercase; padding:0.2rem 0.55rem;border-radius:3px; border:1px solid var(--petal);color:var(--muted);white-space:nowrap;}
 .arrow-circle{ width:2rem;height:2rem;border-radius:50%; border:1px solid var(--petal); display:flex;align-items:center;justify-content:center; flex-shrink:0;color:var(--plum); transition:background 0.2s,border-color 0.2s,transform 0.25s;}
 .work-item:hover .arrow-circle{ background:var(--plum);border-color:var(--plum); color:var(--ivory);transform:rotate(45deg);}
 .about-section{background:var(--plum);padding:8rem 3.5rem}
@@ -209,7 +237,7 @@ footer{padding:5rem 3.5rem 3rem;max-width:1160px;margin:0 auto}
 <div id="pw-gate">
   <div class="pw-box">
     <div class="pw-eyebrow">Cameron Womack</div>
-    <h1 class="pw-heading">Portfolio is<br><em>private.</em></h1>
+    <h1 class="pw-heading">Portfolio is<br>private.</h1>
     <p class="pw-sub">This work is shared selectively.<br>Enter the password to continue.</p>
     <div class="pw-divider"></div>
     <div class="pw-field-wrap">
@@ -231,18 +259,15 @@ footer{padding:5rem 3.5rem 3rem;max-width:1160px;margin:0 auto}
 </nav>
 
 <section class="hero">
- <div class="u d1">
+ <div class="u d1 hero-text">
  <h1 class="hero-h1">
- Design that<br>
- makes <span class="serif-it">hard</span><br>
- things click.
+ Design that makes <span class="serif-it">hard</span> things click.
  </h1>
+ <p class="hero-sub">I specialize in complex workflows, data-heavy interfaces, and AI-assisted design — the kind of work where clarity is hardest to achieve and matters most.</p>
  </div>
- <div class="u d2">
- <div class="carousel-wrap" id="carouselWrap">
- <div class="carousel-line" id="carouselLine"></div>
- <div class="carousel-track" id="carouselTrack"></div>
- </div>
+ <div class="u d2 carousel-section" id="carouselWrap">
+   <div class="carousel-eyebrow">By the numbers</div>
+   <div class="metric-bar" id="metricBar"></div>
  </div>
 </section>
 
@@ -252,20 +277,26 @@ footer{padding:5rem 3.5rem 3rem;max-width:1160px;margin:0 auto}
  </div>
  <a class="work-item" href="designing-with-ai.html">
  <span class="work-num">01</span>
- <h2 class="work-title">Designing with AI</h2>
- <div class="work-chips"><span class="chip">AI collaboration</span><span class="chip">Brand systems</span></div>
+ <div class="work-title-wrap">
+   <h2 class="work-title">Designing with AI</h2>
+   <span class="work-oneliner">Brand identity system for an AI-native interior design startup · Ongoing</span>
+ </div>
  <div class="arrow-circle"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 9.5L9.5 1.5M9.5 1.5H3.5M9.5 1.5V7.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div>
  </a>
  <a class="work-item" href="research-and-design.html">
  <span class="work-num">02</span>
- <h2 class="work-title">Research & Design</h2>
- <div class="work-chips"><span class="chip">User research</span><span class="chip">Enterprise UX</span></div>
+ <div class="work-title-wrap">
+   <h2 class="work-title">Research & Design</h2>
+   <span class="work-oneliner">End-to-end UX for enterprise data tools · 200+ analysts · Moody's Analytics</span>
+ </div>
  <div class="arrow-circle"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 9.5L9.5 1.5M9.5 1.5H3.5M9.5 1.5V7.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div>
  </a>
  <a class="work-item" href="design-strategy.html">
  <span class="work-num">03</span>
- <h2 class="work-title">Design Strategy</h2>
- <div class="work-chips"><span class="chip">Product thinking</span><span class="chip">Strategy</span></div>
+ <div class="work-title-wrap">
+   <h2 class="work-title">Design Strategy</h2>
+   <span class="work-oneliner">0→1 private credit monitoring platform · product definition through delivery</span>
+ </div>
  <div class="arrow-circle"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 9.5L9.5 1.5M9.5 1.5H3.5M9.5 1.5V7.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div>
  </a>
 </section>
@@ -291,7 +322,6 @@ footer{padding:5rem 3.5rem 3rem;max-width:1160px;margin:0 auto}
  <ul class="af-links">
  <li><a href="https://www.linkedin.com/in/cameron-womack-b0481a128/" target="_blank">LinkedIn <span>↗</span></a></li>
  <li><a href="cameron-womack-resume.pdf" target="_blank">Resume <span>↗</span></a></li>
- <li><a href="#">Read.cv <span>↗</span></a></li>
  </ul>
  </div>
  </div>
@@ -300,7 +330,7 @@ footer{padding:5rem 3.5rem 3rem;max-width:1160px;margin:0 auto}
 
 <footer id="contact">
  <h2 class="footer-h">Let's make<br>something <em>good.</em></h2>
- <p class="footer-sub">Open to new roles and collaborations.</p>
+ <p class="footer-sub">Open to senior IC and lead product design roles.</p>
  <a href="mailto:cameron.e.womack@gmail.com" class="footer-btn">
  Say hello
  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1.5 10.5L10.5 1.5M10.5 1.5H4.5M10.5 1.5V7.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
@@ -318,72 +348,18 @@ footer{padding:5rem 3.5rem 3rem;max-width:1160px;margin:0 auto}
 <script>
 const metrics = [
  { num: '600', sup: '+', label: 'analysts using tools I\'ve shipped' },
- { num: '50', sup: '+', label: 'research sessions conducted' },
- { num: '4', sup: '', label: 'years designing complex products' },
+ { num: '50',  sup: '+', label: 'research sessions conducted' },
+ { num: '4',   sup: '',  label: 'years designing complex products' },
 ];
-const ITEM_COUNT = metrics.length;
-const SLOT_H = 340 / 3;
-const ACTIVE_IDX_IN_DOM = 1;
-const track = document.getElementById('carouselTrack');
-const line = document.getElementById('carouselLine');
-const wrap = document.getElementById('carouselWrap');
-const domItems = [ metrics[ITEM_COUNT - 1], ...metrics, metrics[0], ];
-domItems.forEach((m, i) => {
+
+const bar = document.getElementById('metricBar');
+
+metrics.forEach(m => {
  const div = document.createElement('div');
- div.className = 'metric-item state-ghost';
- div.style.height = SLOT_H + 'px';
- div.style.display = 'flex';
- div.style.flexDirection = 'row';
- div.style.alignItems = 'center';
- div.style.gap = '1.5rem';
- div.innerHTML = `<div class="metric-num">${m.num}${m.sup ? `<sup>${m.sup}</sup>` : ''}</div><div class="metric-label">${m.label}</div>`;
- track.appendChild(div);
+ div.className = 'metric-stat';
+ div.innerHTML = `<div class="metric-big-num">${m.num}${m.sup ? `<sup>${m.sup}</sup>` : ''}</div><div class="metric-big-label">${m.label}</div>`;
+ bar.appendChild(div);
 });
-const domNodes = track.querySelectorAll('.metric-item');
-let currentReal = 0;
-let domActive = 1;
-let animating = false;
-function translateForDom(domIdx) { return (1 - domIdx) * SLOT_H; }
-function applyStates() {
- domNodes.forEach((n, i) => { n.classList.remove('state-active','state-ghost'); n.classList.add(i === domActive ? 'state-active' : 'state-ghost'); });
- line.style.top = SLOT_H + 'px';
- line.style.height = SLOT_H + 'px';
-}
-function setTranslate(y, animate) {
- track.style.transition = animate ? 'transform 0.55s cubic-bezier(0.76,0,0.24,1)' : 'none';
- track.style.transform = `translateY(${y}px)`;
-}
-setTranslate(translateForDom(domActive), false);
-applyStates();
-function advance() {
- if (animating) return;
- animating = true;
- const nextDom = domActive + 1;
- setTranslate(translateForDom(nextDom), true);
- applyStates();
- domNodes[domActive].classList.remove('state-active');
- domNodes[domActive].classList.add('state-ghost');
- domNodes[nextDom].classList.remove('state-ghost');
- domNodes[nextDom].classList.add('state-active');
- domActive = nextDom;
- currentReal = (currentReal + 1) % ITEM_COUNT;
- setTimeout(() => {
- if (domActive === domNodes.length - 1) {
- setTranslate(translateForDom(1), false);
- domNodes[domActive].classList.remove('state-active');
- domNodes[domActive].classList.add('state-ghost');
- domNodes[1].classList.remove('state-ghost');
- domNodes[1].classList.add('state-active');
- domActive = 1;
- }
- animating = false;
- }, 550);
-}
-let timer = setInterval(advance, 3000);
-const obs = new IntersectionObserver(entries => {
- entries[0].isIntersecting ? (timer = setInterval(advance, 3000)) : clearInterval(timer);
-}, { threshold: 0.3 });
-obs.observe(wrap);
 
 const bioText = `I'm Cameron, a designer who gravitates toward problems that are genuinely hard to solve. The kind of products where complexity is unavoidable, and good design is the only thing standing between a user and a wall of confusion. I'm equally comfortable leading research, driving product strategy, or getting into the technical details. I'm most energized when all three are happening at once.`;
 const para = document.getElementById('revealPara');
