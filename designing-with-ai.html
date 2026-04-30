@@ -4,21 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Designing with AI — Cameron Womack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Lora:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
   --plum: #2E1A30;
   --lavender: #9B7FA0;
+  --muted: #9B7FA0;
   --petal: #E8D8D2;
   --cream: #F4E9E0;
   --ivory: #F6F1EA;
   --accent: #C8A8CD;
   --rose: #C89898;
+  --grape: #5C3265;
+  --man: 'Manrope', system-ui, sans-serif;
+  --lora: 'Lora', Georgia, serif;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--man);
   background: var(--ivory);
   color: var(--plum);
   line-height: 1.65;
@@ -41,14 +47,25 @@ nav {
 }
 
 nav a {
-  color: var(--plum);
+  color: var(--muted);
   text-decoration: none;
-  font-size: 0.95rem;
+  font-family: var(--man);
+  font-size: 0.75rem;
   font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   transition: color 0.2s;
 }
 
-nav a:hover { color: var(--lavender); }
+nav a:hover { color: var(--plum); }
+
+.nav-logo {
+  font-family: var(--man);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--plum);
+  text-decoration: none;
+}
 
 .nav-left { display: flex; align-items: center; gap: 2rem; }
 .nav-right { display: flex; gap: 2rem; align-items: center; }
@@ -356,13 +373,11 @@ nav a:hover { color: var(--lavender); }
 <body>
 
 <nav>
-  <div class="nav-left">
-    <a href="index.html">← All work</a>
-  </div>
-  <div class="nav-right">
-    <a href="about.html">About</a>
-    <a href="resume.pdf">Resume ↗</a>
-  </div>
+  <a href="index.html" class="nav-logo">← All work</a>
+  <ul class="nav-links" style="list-style:none;display:flex;gap:2.5rem;align-items:center;">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="cameron-womack-resume.pdf" target="_blank">Resume ↗</a></li>
+  </ul>
 </nav>
 
 <div class="journal-container">
@@ -485,15 +500,15 @@ const entries = [
         <li>documentation from the Alterna team outlining marketing strategies, pitch decks, and brand assets</li>
       </ul>
       
-      <div style="display:grid;grid-template-columns:2fr 1fr;gap:1rem;margin:2rem 0 0;">
-        <div style="grid-row:span 2;">
-          <img src="inspiration_pics_text.png" alt="Visual inspiration with magazine references" style="width:100%;height:100%;object-fit:cover;border-radius:8px;border:1px solid var(--petal);">
+      <div style="position:relative;height:380px;margin:2rem 0 3rem;">
+        <div style="position:absolute;width:52%;top:28px;left:3%;transform:rotate(-4deg);filter:brightness(0.88);z-index:1;border-radius:8px;overflow:hidden;border:1px solid var(--petal);box-shadow:0 4px 24px rgba(46,26,48,0.1);">
+          <img src="alterna_branding_doc.png" alt="Alterna branding documentation" style="width:100%;display:block;">
         </div>
-        <div>
-          <img src="alterna_brand_kit_slides.png" alt="Alterna brand kit slides" style="width:100%;height:100%;object-fit:cover;border-radius:8px;border:1px solid var(--petal);">
+        <div style="position:absolute;width:54%;top:14px;left:22%;transform:rotate(2.5deg);filter:brightness(0.94);z-index:2;border-radius:8px;overflow:hidden;border:1px solid var(--petal);box-shadow:0 4px 24px rgba(46,26,48,0.1);">
+          <img src="alterna_brand_kit_slides.png" alt="Alterna brand kit slides" style="width:100%;display:block;">
         </div>
-        <div>
-          <img src="alterna_branding_doc.png" alt="Alterna branding documentation" style="width:100%;height:100%;object-fit:cover;border-radius:8px;border:1px solid var(--petal);">
+        <div style="position:absolute;width:56%;top:0;left:50%;transform:translateX(-50%) rotate(-1deg);z-index:3;border-radius:8px;overflow:hidden;border:1px solid var(--petal);box-shadow:0 8px 32px rgba(46,26,48,0.14);">
+          <img src="inspiration_pics_text.png" alt="Visual inspiration with magazine references" style="width:100%;display:block;">
         </div>
       </div>
       <p style="text-align:center;font-style:italic;color:var(--lavender);margin-top:0.5rem;">Shared reference materials</p>

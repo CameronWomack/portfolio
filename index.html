@@ -19,17 +19,17 @@ nav{ position:fixed;top:0;left:0;right:0;z-index:100; padding:1.4rem 3.5rem; dis
 .hero{ padding:5.5rem 3.5rem 0; max-width:1160px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:4rem;}
 .hero-h1{ font-family:var(--man); font-size:clamp(3rem,6vw,6rem); font-weight:700; line-height:0.95; letter-spacing:-0.04em; color:var(--plum);}
 .hero-h1 .serif-it{ font-family:var(--lora); font-weight:400;font-style:italic; letter-spacing:-0.02em; color:var(--grape);}
-.carousel-wrap{ position:relative; padding-left:2.5rem; border-left:1px solid var(--petal); height:260px; overflow:hidden;}
+.carousel-wrap{ position:relative; padding-left:2.5rem; border-left:1px solid var(--petal); height:340px; overflow:hidden;}
 .carousel-line{ position:absolute; left:-1px;width:2px; background:var(--grape); border-radius:2px; transition:top 0.55s cubic-bezier(0.76,0,0.24,1), height 0.55s cubic-bezier(0.76,0,0.24,1); pointer-events:none; z-index:2;}
 .carousel-track{ position:absolute; top:0;left:2.5rem;right:0; transition:transform 0.55s cubic-bezier(0.76,0,0.24,1); will-change:transform;}
-.metric-item{ padding:0 0; cursor:pointer; user-select:none;}
-.metric-num{ font-family:var(--man); font-size:clamp(2.8rem,5vw,4.5rem); font-weight:700; letter-spacing:-0.05em; line-height:1; margin-bottom:0.25rem; transition:color 0.4s, opacity 0.4s;}
+.metric-item{ padding:0 0; cursor:pointer; user-select:none; display:flex; align-items:center; gap:1.5rem;}
+.metric-num{ font-family:var(--man); font-size:clamp(2.8rem,5vw,4.5rem); font-weight:700; letter-spacing:-0.05em; line-height:1; transition:color 0.4s, opacity 0.4s, font-size 0.4s; flex-shrink:0;}
 .metric-num sup{ font-size:0.42em;font-weight:600;vertical-align:super;}
-.metric-label{ font-size:0.8rem;font-weight:400;line-height:1.4; transition:color 0.4s, opacity 0.4s;}
-.metric-item.state-active .metric-num { color:var(--plum); opacity:1; }
-.metric-item.state-active .metric-label { color:var(--muted); opacity:1; }
-.metric-item.state-ghost .metric-num { color:var(--plum); opacity:0.2; }
-.metric-item.state-ghost .metric-label { color:var(--muted); opacity:0.2; }
+.metric-label{ font-size:0.8rem;font-weight:400;line-height:1.4; transition:color 0.4s, opacity 0.4s; text-align:left; max-width:160px;}
+.metric-item.state-active .metric-num { color:var(--plum); opacity:1; font-size:clamp(2.8rem,5vw,4.5rem); }
+.metric-item.state-active .metric-label { color:var(--muted); opacity:1; display:block; }
+.metric-item.state-ghost .metric-num { color:var(--plum); opacity:0.18; font-size:clamp(1.6rem,2.8vw,2.5rem); }
+.metric-item.state-ghost .metric-label { display:none; }
 .work{ padding:3.5rem 3.5rem 6rem; max-width:1160px;margin:0 auto;}
 .section-header{ display:flex;align-items:center; margin-bottom:2rem;padding-bottom:1rem; border-bottom:1px solid var(--petal);}
 .section-label{ font-size:0.7rem;font-weight:600; letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);}
@@ -143,7 +143,7 @@ footer{padding:5rem 3.5rem 3rem;max-width:1160px;margin:0 auto}
  <div class="af-row">
  <span class="af-label">Find me</span>
  <ul class="af-links">
- <li><a href="#">LinkedIn <span>↗</span></a></li>
+ <li><a href="https://www.linkedin.com/in/cameron-womack-b0481a128/" target="_blank">LinkedIn <span>↗</span></a></li>
  <li><a href="cameron-womack-resume.pdf" target="_blank">Resume <span>↗</span></a></li>
  <li><a href="#">Read.cv <span>↗</span></a></li>
  </ul>
@@ -155,7 +155,7 @@ footer{padding:5rem 3.5rem 3rem;max-width:1160px;margin:0 auto}
 <footer id="contact">
  <h2 class="footer-h">Let's make<br>something <em>good.</em></h2>
  <p class="footer-sub">Open to new roles and collaborations.</p>
- <a href="mailto:hello@cameronwomack.com" class="footer-btn">
+ <a href="mailto:cameron.e.womack@gmail.com" class="footer-btn">
  Say hello
  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1.5 10.5L10.5 1.5M10.5 1.5H4.5M10.5 1.5V7.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
  </a>
@@ -176,7 +176,7 @@ const metrics = [
  { num: '4', sup: '', label: 'years designing complex products' },
 ];
 const ITEM_COUNT = metrics.length;
-const SLOT_H = 260 / 3;
+const SLOT_H = 340 / 3;
 const ACTIVE_IDX_IN_DOM = 1;
 const track = document.getElementById('carouselTrack');
 const line = document.getElementById('carouselLine');
@@ -187,8 +187,9 @@ domItems.forEach((m, i) => {
  div.className = 'metric-item state-ghost';
  div.style.height = SLOT_H + 'px';
  div.style.display = 'flex';
- div.style.flexDirection = 'column';
- div.style.justifyContent = 'center';
+ div.style.flexDirection = 'row';
+ div.style.alignItems = 'center';
+ div.style.gap = '1.5rem';
  div.innerHTML = `<div class="metric-num">${m.num}${m.sup ? `<sup>${m.sup}</sup>` : ''}</div><div class="metric-label">${m.label}</div>`;
  track.appendChild(div);
 });
