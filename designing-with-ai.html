@@ -322,6 +322,7 @@ nav a:hover { color: var(--plum); }
   backdrop-filter: blur(12px);
   border-top: 1px solid var(--petal);
   box-shadow: 0 -4px 24px rgba(46,26,48,0.06);
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 /* Hide nav on cover page */
@@ -500,15 +501,13 @@ const entries = [
         <li>documentation from the Alterna team outlining marketing strategies, pitch decks, and brand assets</li>
       </ul>
       
-      <div style="position:relative;height:380px;margin:2rem 0 3rem;">
-        <div style="position:absolute;width:52%;top:28px;left:3%;transform:rotate(-4deg);filter:brightness(0.88);z-index:1;border-radius:8px;overflow:hidden;border:1px solid var(--petal);box-shadow:0 4px 24px rgba(46,26,48,0.1);">
-          <img src="alterna_branding_doc.png" alt="Alterna branding documentation" style="width:100%;display:block;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;align-items:start;margin:2rem 0 0;">
+        <div style="margin-top:0;">
+          <img src="inspiration_pics_text.png" alt="Visual inspiration with magazine references" style="width:100%;display:block;border-radius:8px;border:1px solid var(--petal);box-shadow:0 4px 20px rgba(46,26,48,0.08);">
         </div>
-        <div style="position:absolute;width:54%;top:14px;left:22%;transform:rotate(2.5deg);filter:brightness(0.94);z-index:2;border-radius:8px;overflow:hidden;border:1px solid var(--petal);box-shadow:0 4px 24px rgba(46,26,48,0.1);">
-          <img src="alterna_brand_kit_slides.png" alt="Alterna brand kit slides" style="width:100%;display:block;">
-        </div>
-        <div style="position:absolute;width:56%;top:0;left:50%;transform:translateX(-50%) rotate(-1deg);z-index:3;border-radius:8px;overflow:hidden;border:1px solid var(--petal);box-shadow:0 8px 32px rgba(46,26,48,0.14);">
-          <img src="inspiration_pics_text.png" alt="Visual inspiration with magazine references" style="width:100%;display:block;">
+        <div style="display:flex;flex-direction:column;gap:1.25rem;margin-top:2.5rem;">
+          <img src="alterna_brand_kit_slides.png" alt="Alterna brand kit slides" style="width:100%;display:block;border-radius:8px;border:1px solid var(--petal);box-shadow:0 4px 20px rgba(46,26,48,0.08);">
+          <img src="alterna_branding_doc.png" alt="Alterna branding documentation" style="width:100%;display:block;border-radius:8px;border:1px solid var(--petal);box-shadow:0 4px 20px rgba(46,26,48,0.08);">
         </div>
       </div>
       <p style="text-align:center;font-style:italic;color:var(--lavender);margin-top:0.5rem;">Shared reference materials</p>
@@ -751,6 +750,24 @@ window.addEventListener('load', () => {
   document.getElementById('prevBtnBottom').disabled = true;
   document.getElementById('currentEntryBottom').textContent = 'Cover';
   document.querySelector('.entry-nav-bottom').style.display = 'none';
+
+  // Hide sticky nav when next-section is in view
+  const nextSection = document.querySelector('.next-section');
+  const navBar = document.querySelector('.entry-nav-bottom');
+  if (nextSection && navBar) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navBar.style.transform = 'translateY(100%)';
+          navBar.style.opacity = '0';
+        } else {
+          navBar.style.transform = 'translateY(0)';
+          navBar.style.opacity = '1';
+        }
+      });
+    }, { threshold: 0.05 });
+    obs.observe(nextSection);
+  }
 });
 </script>
 
