@@ -376,7 +376,7 @@ nav a:hover { color: var(--plum); }
 <nav>
   <a href="index.html" class="nav-logo">← All work</a>
   <ul class="nav-links" style="list-style:none;display:flex;gap:2.5rem;align-items:center;">
-    <li><a href="index.html#about">About</a></li>
+    <li><a href="about.html">About</a></li>
     <li><a href="cameron-womack-resume.pdf" target="_blank">Resume ↗</a></li>
   </ul>
 </nav>
@@ -795,13 +795,11 @@ The goal is to help translate the inspiration and brand materials into clearer e
 
       <p>To push back on ChatGPT's framing, I worked with Claude to create <a href="https://docs.google.com/document/d/1qSeiQJAysjHH4csVxA-tx2uJPE_TiYs7/edit?rtpof=true&sd=true&tab=t.0" target="_blank" style="color:var(--lavender);text-decoration:underline;">a document that highlights the importance of the taste profile in the tool</a>. The document outlines how taste signals are captured, how the living profile is used by both users and the Alterna team, and how the profile functions as a shareable artifact — not just a design brief.</p>
 
-      <div style="display:flex;gap:2rem;align-items:flex-start;margin:2rem 0;flex-wrap:wrap;">
-        <div style="flex:1;min-width:280px;">
-          <p>One of my favorite ideas from the document was the suggestion that user pain points shouldn't just be collected for the team's internal reference, but actually reflected back in Alterna's output to help guide decision-making. For example, if a user flags "visualizing the finished result" as a challenge, the system could prioritize room renders in the output. If they flag "committing to a purchase," the sourcing section might include additional framing that builds confidence around those decisions.</p>
-          <p><span style="color:var(--lavender);">It creates a moment where the platform demonstrates that it's actually listening.</span> More importantly, it turns the system's recommendations into something that feels genuinely personalized — not just based on taste, but also on the practical hurdles a user is trying to overcome while designing their space.</p>
-        </div>
-        <img src="screenshot.png" alt="iMessage thread sharing the Alterna taste profile document" style="width:260px;border-radius:12px;border:1px solid var(--petal);flex-shrink:0;" />
-      </div>
+      <p>One of my favorite ideas from the document was the suggestion that user pain points shouldn't just be collected for the team's internal reference, but actually reflected back in Alterna's output to help guide decision-making. For example, if a user flags "visualizing the finished result" as a challenge, the system could prioritize room renders in the output. If they flag "committing to a purchase," the sourcing section might include additional framing that builds confidence around those decisions.</p>
+
+      <p><span style="color:var(--lavender);">It creates a moment where the platform demonstrates that it's actually listening.</span> More importantly, it turns the system's recommendations into something that feels genuinely personalized — not just based on taste, but also on the practical hurdles a user is trying to overcome while designing their space.</p>
+
+      <img src="screenshot.png" alt="iMessage thread sharing the Alterna taste profile document" style="width:100%;max-width:600px;display:block;margin:2rem auto;border-radius:12px;border:1px solid var(--petal);" />
 
       <div style="margin-top:4rem;padding-top:2rem;border-top:2px solid var(--lavender);">
         <h2 style="font-size:1.8rem;font-weight:600;color:var(--lavender);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:1.5rem;">Next Steps</h2>
@@ -834,9 +832,9 @@ The goal is to help translate the inspiration and brand materials into clearer e
         <h2 style="font-size:1.8rem;font-weight:600;color:var(--lavender);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:1.5rem;">Next Steps</h2>
         <p>With this prototype in place, the next step is to review the updates with the founders and gather feedback on how well it aligns with the service they want Alterna to provide. The key hypotheses to pressure-test in the next session:</p>
         <ul style="margin-left:1.5rem;margin-bottom:1.5rem;">
+          <li><strong>Connecting Taste Discovery to Designer Collaboration</strong>: How and when should Alterna designers enter the experience, and can the platform capture additional taste signal data through that collaboration?</li>
           <li><strong>Refining the Taste Discovery Flow</strong>: Does the updated interaction feel intuitive and aligned with Alterna's editorial, personality-driven approach — or does it need to go further?</li>
           <li><strong>Evaluating the Taste Profile Artifact</strong>: Does the editable taste profile function convincingly as a living record of the user's aesthetic preferences, and does a shareable version feel like something users would actually want to post?</li>
-          <li><strong>Connecting Taste Discovery to Designer Collaboration</strong>: How and when should Alterna designers enter the experience, and can the platform capture additional taste signal data through that collaboration?</li>
         </ul>
         <p>The goal of this next session is to validate the direction of the experience model and identify the areas where the design should evolve next.</p>
       </div>
@@ -874,8 +872,7 @@ The goal is to help translate the inspiration and brand materials into clearer e
 
       <div style="margin-top:4rem;padding-top:2rem;border-top:2px solid var(--lavender);">
         <h2 style="font-size:1.8rem;font-weight:600;color:var(--lavender);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:1.5rem;">Next Steps</h2>
-        <p>Three clear threads to pull on coming out of this meeting: <strong>(1) How do we redesign the taste signaling interaction to feel less like a quiz and more like a genuine read?</strong> (2) What's the lightest-weight way to bring off-platform designer communication back into the taste profile without adding friction? (3) Can Claude help build and implement a design system that gives the prototype the editorial, expressive visual voice Alterna is looking for?</p>
-        <p>The Pinterest board is the starting point for the visual direction — once I've reviewed it with the founders, I'll begin translating those references into the prototype with Claude's help on the design system side.</p>
+        <p>Three clear threads to pull on coming out of this phase. First and most pressing: <strong>Can Claude help build and implement a design system that gives the prototype the editorial, expressive visual voice Alterna is looking for?</strong> The Pinterest board is the starting point — once I've reviewed it with the founders, I'll begin translating those references into the prototype with Claude's help on the design system side. Then: (2) How do we redesign the taste signaling interaction to feel less like a quiz and more like a genuine read? (3) What's the lightest-weight way to bring off-platform designer communication back into the taste profile without adding friction?</p>
       </div>
     `
   },
@@ -895,7 +892,7 @@ The goal is to help translate the inspiration and brand materials into clearer e
       <div style="margin:2.5rem auto;max-width:100%;">
         <iframe
           src="alterna-design-system-v8.html"
-          style="width:100%;height:640px;border-radius:8px;border:1px solid var(--petal);display:block;"
+          style="width:100%;height:900px;border-radius:8px;border:1px solid var(--petal);display:block;"
           title="Alterna Design System v8"
           loading="lazy">
         </iframe>
