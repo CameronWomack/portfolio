@@ -99,8 +99,8 @@ nav.scrolled{box-shadow:0 2px 24px rgba(46,26,48,0.08);}
 .hero{
   min-height:100vh;
   display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  text-align:center;
+  align-items:flex-start;justify-content:flex-end;
+  text-align:left;
   padding:0 3.5rem 5rem;
   position:relative;
   overflow:hidden;
@@ -121,31 +121,26 @@ nav.scrolled{box-shadow:0 2px 24px rgba(46,26,48,0.08);}
 
 
 .hero-h1{
-  font-family:var(--lora);
-  font-size:clamp(3.8rem,9vw,8.5rem);
-  font-weight:400;
-  line-height:1.0;
-  letter-spacing:-0.02em;
+  font-family:var(--man);
+  font-size:clamp(4.5rem,10.5vw,11rem);
+  font-weight:800;
+  line-height:0.92;
+  letter-spacing:-0.04em;
   color:var(--plum);
-  max-width:920px;
-  margin-bottom:2.25rem;
+  max-width:100%;
+  margin-bottom:1.75rem;
 }
 .hero-line{
-  display:block;overflow:hidden;
-  padding:0.08em 0 0.12em;
-  margin:-0.08em 0 -0.12em;
+  display:block;overflow:visible;
 }
 .hero-line span{
   display:inline-block;
-  opacity:0;transform:translateY(105%);
+  opacity:0;transform:translateY(60%);
   animation:slideUp 0.85s cubic-bezier(0.16,1,0.3,1) forwards;
 }
 .hero-line:nth-child(1) span{animation-delay:0.3s;}
 .hero-line:nth-child(2) span{animation-delay:0.48s;}
-.hero-line:nth-child(3) span{
-  font-style:italic;color:var(--grape);
-  animation-delay:0.66s;
-}
+.click-accent{font-weight:800;color:var(--grape);}
 
 @keyframes slideUp{
   to{opacity:1;transform:translateY(0);}
@@ -155,18 +150,19 @@ nav.scrolled{box-shadow:0 2px 24px rgba(46,26,48,0.08);}
 }
 
 .hero-sub{
-  font-family:var(--lora);
-  font-size:clamp(1.05rem,1.6vw,1.3rem);
-  font-style:italic;
-  color:var(--grape);
+  font-family:var(--man);
+  font-size:clamp(0.95rem,1.4vw,1.15rem);
+  font-weight:400;
+  font-style:normal;
+  color:var(--muted);
   line-height:1.6;
-  max-width:600px;
+  max-width:580px;
   opacity:0;transform:translateY(12px);
   animation:fadeUp 0.7s 0.88s forwards;
 }
 
 .hero-scroll{
-  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  position:absolute;bottom:2.5rem;right:3.5rem;
   display:flex;flex-direction:column;align-items:center;gap:0.45rem;
   font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;
   color:rgba(46,26,48,0.35);
@@ -408,12 +404,11 @@ footer{padding:5rem 3.5rem 3rem;max-width:1160px;margin:0 auto;}
 
   <h1 class="hero-h1">
     <span class="hero-line"><span>Design that makes</span></span>
-    <span class="hero-line"><span>hard things</span></span>
-    <span class="hero-line"><span>click.</span></span>
+    <span class="hero-line"><span>hard things <span class="click-accent">click.</span></span></span>
   </h1>
 
   <p class="hero-sub">
-    Complex workflows, data-heavy interfaces, and AI-assisted design — the kind of work where clarity is hardest to achieve and matters most.
+    Complex workflows, data-heavy interfaces, and AI-assisted design, the kind of work where clarity is hardest to achieve and matters most.
   </p>
 
   <div class="hero-scroll">
