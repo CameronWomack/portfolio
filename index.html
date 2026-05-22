@@ -288,7 +288,7 @@ nav.scrolled{box-shadow:0 2px 24px rgba(46,26,48,0.08);}
   display:block;
   object-fit:cover;
   object-position:top center;
-  filter:grayscale(100%) contrast(1.05);
+  filter:grayscale(100%) sepia(30%) contrast(0.9) brightness(1.05);
   transform:translateY(0);
   transition:
     filter 0.5s ease,
@@ -296,7 +296,7 @@ nav.scrolled{box-shadow:0 2px 24px rgba(46,26,48,0.08);}
 }
 /* On hover: reveal color and begin slow upward scroll */
 .project-card:hover .card-visual img{
-  filter:grayscale(0%) contrast(1);
+  filter:grayscale(0%) sepia(0%) contrast(1) brightness(1);
   animation:scrollUp 12s linear forwards;
 }
 @keyframes scrollUp{
