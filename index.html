@@ -276,77 +276,32 @@ nav.scrolled{box-shadow:0 2px 24px rgba(46,26,48,0.08);}
 
 /* card visual area */
 .card-visual{
-  height:210px;
+  height:240px;
   position:relative;
   overflow:hidden;
-  display:flex;align-items:center;justify-content:center;
   flex-shrink:0;
+  background:var(--plum);
 }
-.card-visual-1{background:linear-gradient(135deg,#EDE6F5 0%,#D4C0E8 100%);}
-.card-visual-2{background:linear-gradient(135deg,#E0ECF5 0%,#B8D4E8 100%);}
-.card-visual-3{background:linear-gradient(135deg,#F5EDE6 0%,#E8D0BC 100%);}
-
-/* laptop device frame */
-.laptop{position:relative;width:170px;}
-.laptop-lid{
-  background:#fff;
-  border:2px solid rgba(46,26,48,0.22);
-  border-radius:8px 8px 0 0;
-  padding:3px 3px 0;
+.card-visual img{
+  width:100%;
+  /* tall enough that there's room to scroll — image natural height */
+  display:block;
+  object-fit:cover;
+  object-position:top center;
+  filter:grayscale(100%) contrast(1.05);
+  transform:translateY(0);
+  transition:
+    filter 0.5s ease,
+    transform 0s;
 }
-.laptop-cam{
-  width:5px;height:5px;border-radius:50%;
-  background:rgba(46,26,48,0.18);
-  margin:3px auto 2px;
+/* On hover: reveal color and begin slow upward scroll */
+.project-card:hover .card-visual img{
+  filter:grayscale(0%) contrast(1);
+  animation:scrollUp 12s linear forwards;
 }
-.laptop-screen{
-  border-radius:4px;
-  background:var(--ivory);
-  height:82px;
-  display:flex;flex-direction:column;
-  align-items:flex-start;
-  justify-content:center;
-  gap:5px;padding:8px 10px;
-}
-.s-bar{
-  height:4px;border-radius:2px;
-  background:rgba(92,50,101,0.28);
-}
-.laptop-hinge{
-  height:6px;
-  background:rgba(46,26,48,0.15);
-  border-radius:0 0 2px 2px;
-  margin-top:-1px;
-}
-.laptop-base{
-  height:3px;
-  background:rgba(46,26,48,0.1);
-  border-radius:0 0 5px 5px;
-  margin:0 -6px;
-}
-
-
-
-/* ai card visual */
-.ai-chip{
-  background:rgba(255,255,255,0.72);
-  border:1px solid rgba(180,130,100,0.3);
-  border-radius:10px;
-  padding:10px 18px;
-  font-family:var(--man);font-size:10px;font-weight:600;
-  letter-spacing:0.04em;color:rgba(92,50,101,0.8);
-  margin-bottom:10px;
-}
-.ai-swatches{display:flex;gap:6px;}
-.swatch{
-  width:36px;height:44px;border-radius:8px;
-  background:rgba(255,255,255,0.5);
-  border:1px solid rgba(180,130,100,0.25);
-  transition:transform 0.2s;
-}
-.project-card:hover .swatch:nth-child(2){
-  border-color:rgba(92,50,101,0.5);
-  transform:translateY(-3px);
+@keyframes scrollUp{
+  from { transform:translateY(0); }
+  to   { transform:translateY(-55%); }
 }
 
 /* card body */
@@ -457,15 +412,8 @@ footer{padding:5rem 3.5rem 3rem;max-width:1160px;margin:0 auto;}
 
     <!-- Card 1: Designing with AI -->
     <a class="project-card" href="designing-with-ai.html">
-      <div class="card-visual card-visual-3">
-        <div style="display:flex;flex-direction:column;align-items:center;">
-          <div class="ai-chip">✦ AI-generated suggestion</div>
-          <div class="ai-swatches">
-            <div class="swatch"></div>
-            <div class="swatch" style="border-color:rgba(92,50,101,0.4);transform:translateY(-4px);background:rgba(255,255,255,0.75);"></div>
-            <div class="swatch"></div>
-          </div>
-        </div>
+      <div class="card-visual">
+        <img src="DesigningWithAIScreenshot_html.png" alt="Designing with AI case study preview">
       </div>
       <div class="card-body">
         <div class="card-tag">01 — Designing with AI</div>
@@ -477,27 +425,8 @@ footer{padding:5rem 3.5rem 3rem;max-width:1160px;margin:0 auto;}
 
     <!-- Card 2: Research & Design -->
     <a class="project-card" href="research-and-design.html">
-      <div class="card-visual card-visual-2">
-        <div class="laptop">
-          <div class="laptop-lid">
-            <div class="laptop-cam"></div>
-            <div class="laptop-screen">
-              <!-- mini chart bars -->
-              <div style="display:flex;align-items:flex-end;gap:4px;padding:4px 0 2px;">
-                <div style="width:10px;height:28px;background:rgba(56,120,160,0.35);border-radius:2px;"></div>
-                <div style="width:10px;height:44px;background:rgba(56,120,160,0.55);border-radius:2px;"></div>
-                <div style="width:10px;height:36px;background:rgba(56,120,160,0.7);border-radius:2px;"></div>
-                <div style="width:10px;height:54px;background:rgba(56,120,160,0.85);border-radius:2px;"></div>
-                <div style="width:10px;height:40px;background:rgba(56,120,160,0.65);border-radius:2px;"></div>
-              </div>
-              <div class="s-bar" style="width:75%;margin-top:4px;"></div>
-              <div class="s-bar" style="width:55%;opacity:0.5;"></div>
-            </div>
-          </div>
-          <div class="laptop-hinge"></div>
-          <div class="laptop-base"></div>
-        </div>
-
+      <div class="card-visual">
+        <img src="Research_DesignScreenshot_html.png" alt="Research and Design case study preview">
       </div>
       <div class="card-body">
         <div class="card-tag">02 — Research &amp; Design</div>
@@ -509,32 +438,8 @@ footer{padding:5rem 3.5rem 3rem;max-width:1160px;margin:0 auto;}
 
     <!-- Card 3: Design Strategy -->
     <a class="project-card" href="design-strategy.html">
-      <div class="card-visual card-visual-1">
-        <div class="laptop">
-          <div class="laptop-lid">
-            <div class="laptop-cam"></div>
-            <div class="laptop-screen">
-              <div class="s-bar" style="width:80%;"></div>
-              <div class="s-bar" style="width:60%;opacity:0.65;"></div>
-              <div style="display:flex;gap:5px;margin-top:6px;">
-                <div style="width:28px;height:28px;border-radius:6px;background:rgba(92,50,101,0.15);"></div>
-                <div style="flex:1;">
-                  <div class="s-bar" style="width:100%;margin-bottom:4px;opacity:0.5;"></div>
-                  <div class="s-bar" style="width:70%;opacity:0.3;"></div>
-                </div>
-              </div>
-              <div style="display:flex;gap:5px;margin-top:4px;">
-                <div style="width:28px;height:28px;border-radius:6px;background:rgba(92,50,101,0.1);"></div>
-                <div style="flex:1;">
-                  <div class="s-bar" style="width:90%;margin-bottom:4px;opacity:0.4;"></div>
-                  <div class="s-bar" style="width:55%;opacity:0.25;"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="laptop-hinge"></div>
-          <div class="laptop-base"></div>
-        </div>
+      <div class="card-visual">
+        <img src="DesignStratecyScreenshot_html.png" alt="Design Strategy case study preview">
       </div>
       <div class="card-body">
         <div class="card-tag">03 — Design Strategy</div>
