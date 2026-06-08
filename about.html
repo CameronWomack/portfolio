@@ -4,294 +4,538 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About — Cameron Womack</title>
-<meta name="description" content="Senior Experience Designer specializing in complex workflows, data-heavy interfaces, and AI-assisted design.">
+<meta name="description" content="Senior Experience Designer based in Brooklyn. My journey from Spelman to NYU to Moody's Analytics.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+/* ── INLINE TOKEN FALLBACK ── */
 :root{
-  --ivory: #F6F1EA;
-  --petal: #EAD8D2;
-  --rose: #C89898;
-  --plum: #2E1A30;
-  --grape: #5C3265;
-  --muted: #9B7FA0;
-  --man: 'Plus Jakarta Sans', system-ui, sans-serif;
-  --lora: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --c-cream-50:#FCF4EE;--c-cream-100:#FAF0EA;--c-white:#FFFDF9;
+  --c-pink-100:#FCDCE6;--c-pink-500:#FB4A82;
+  --c-berry-500:#6E2348;--c-ink-700:#5A4F47;--c-ink-900:#221B16;
+  --c-butter-500:#F4C44A;--c-butter-100:#FDF5D5;
+  --s-1:.25rem;--s-2:.5rem;--s-3:.75rem;--s-4:1rem;--s-5:1.5rem;
+  --s-6:2rem;--s-7:3rem;--s-8:4rem;--s-9:6rem;--s-10:9rem;
+  --r-sm:6px;--r-md:12px;--r-lg:18px;--r-xl:22px;--r-pill:999px;
+  --ff-display:'Fraunces',Georgia,serif;
+  --ff-body:'Plus Jakarta Sans',system-ui,sans-serif;
+  --ff-mono:'DM Mono',ui-monospace,monospace;
+  --ff-script:'Caveat',cursive;
+  --fs-xs:.7rem;--fs-sm:.85rem;--fs-base:1rem;--fs-lg:1.4rem;
+  --fs-xl:clamp(1.5rem,2.4vw,2rem);
+  --fs-2xl:clamp(2.75rem,6.5vw,6rem);
+  --fs-3xl:clamp(2.5rem,5.5vw,5rem);
+  --lh-tight:.93;--lh-base:1.6;--lh-loose:1.85;
+  --tr-display:-0.025em;--tr-mono:.18em;
+  --ease-spring:cubic-bezier(0.34,1.45,0.64,1);
+  --ease-soft:cubic-bezier(0.16,1,0.3,1);
+  --dur-fast:150ms;--dur-base:320ms;--dur-slow:620ms;
+  --shadow-btn-hover:4px 4px 0 var(--c-ink-900);
+  --surface-base:var(--c-cream-100);--surface-raised:var(--c-cream-50);
+  --surface-card:var(--c-white);--surface-tint:var(--c-pink-100);
+  --text-primary:var(--c-ink-900);--text-secondary:var(--c-ink-700);
+  --text-label:var(--c-berry-500);--text-handwritten:var(--c-berry-500);
+  --text-display-accent:var(--c-pink-500);
+  --border-subtle:rgba(34,27,22,.12);--border-strong:var(--c-ink-900);
+  --action-primary-bg:var(--c-pink-500);--action-primary-text:var(--c-ink-900);
+  --action-primary-border:var(--c-ink-900);
+  --focus-ring:var(--c-pink-500);--focus-offset:3px;--focus-width:2.5px;
+  --layout-max:1160px;--layout-gutter:clamp(1.5rem,4vw,3rem);--z-nav:100;
+  --grid-alpha:.03;
 }
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
+:focus-visible{outline:var(--focus-width) solid var(--focus-ring);outline-offset:var(--focus-offset);border-radius:2px;}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+.skip-link{position:absolute;top:-100px;left:var(--s-5);background:var(--c-ink-900);color:var(--c-cream-100);font-family:var(--ff-mono);font-size:var(--fs-sm);padding:var(--s-3) var(--s-5);border-radius:var(--r-md);text-decoration:none;z-index:1000;transition:top .2s;}
+.skip-link:focus{top:var(--s-4);}
+
+/* ── RESET ── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  background: var(--ivory);
-  color: var(--plum);
-  font-family: var(--man);
-  font-size: 16px;
-  line-height: 1.6;
-  overflow-x: hidden;
+  background-color:var(--c-cream-100);
+  background-image:
+    repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(34,27,22,var(--grid-alpha)) 39px,rgba(34,27,22,var(--grid-alpha)) 40px),
+    repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(34,27,22,var(--grid-alpha)) 39px,rgba(34,27,22,var(--grid-alpha)) 40px);
+  background-size:40px 40px;
+  color:var(--text-primary);
+  font-family:var(--ff-body);
+  font-size:var(--fs-base);
+  line-height:var(--lh-base);
+  overflow-x:hidden;
 }
 
+/* ── FLOATING NAV ── */
 nav{
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 1.4rem 3.5rem;
-  display: flex; align-items: center; justify-content: space-between;
-  background: rgba(246,241,234,0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--petal);
+  position:fixed;top:var(--s-4);left:var(--s-5);right:var(--s-5);z-index:var(--z-nav);
+  padding:var(--s-3) var(--s-5);
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(250,240,234,.82);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-radius:var(--r-lg);border:1px solid rgba(34,27,22,.06);
+  box-shadow:0 4px 24px rgba(34,27,22,.05);
+  transition:box-shadow var(--dur-base),background var(--dur-base);
 }
-.nav-logo{font-family:var(--man);font-size:0.85rem;font-weight:600;color:var(--plum);text-decoration:none;}
-.nav-links{display:flex;gap:2.5rem;list-style:none}
-.nav-links a{font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
-.nav-links a:hover{color:var(--plum)}
-.nav-links a.active{color:var(--plum);font-weight:600}
+nav.scrolled{background:rgba(250,240,234,.94);box-shadow:0 6px 32px rgba(34,27,22,.1);}
+.nav-logo{font-family:var(--ff-display);font-size:var(--fs-base);font-weight:700;letter-spacing:-.01em;color:var(--text-primary);text-decoration:none;}
+.nav-links{display:flex;gap:var(--s-6);list-style:none;}
+.nav-links a{font-family:var(--ff-mono);font-size:var(--fs-xs);font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-secondary);text-decoration:none;transition:color var(--dur-fast);position:relative;padding:var(--s-1) 0;}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:var(--c-pink-500);transform:scaleX(0);transition:transform var(--dur-base);transform-origin:left;}
+.nav-links a:hover{color:var(--text-primary);}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
+.nav-links a.active{color:var(--text-primary);}
 
-.about-hero{
-  padding: 9rem 3.5rem 0;
-  max-width: 1160px;
-  margin: 0 auto;
+/* ── PAGE HEADER ── */
+.journey-header{
+  max-width:var(--layout-max);margin:0 auto;
+  padding:calc(var(--s-10) + var(--s-4)) var(--layout-gutter) var(--s-8);
+  text-align:center;
 }
-.about-eyebrow{
-  font-size: 0.68rem; font-weight: 600;
-  letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--rose); margin-bottom: 4rem;
+.journey-title{
+  font-family:var(--ff-display);font-optical-sizing:auto;
+  font-size:var(--fs-3xl);font-weight:900;
+  letter-spacing:var(--tr-display);line-height:var(--lh-tight);
+  color:var(--c-berry-500);
+  opacity:0;transform:translateY(16px);
+  animation:fadeUp var(--dur-slow) .2s var(--ease-soft) forwards;
 }
+.journey-title .accent{color:var(--text-display-accent);}
 
-.about-grid{
-  display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 6rem;
-  align-items: start;
-  padding-bottom: 6rem;
-  border-bottom: 1px solid var(--petal);
-}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
 
-.about-name{
-  font-family: var(--man);
-  font-size: clamp(3.5rem, 7vw, 6rem);
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 0.92;
-  color: var(--plum);
-  margin-bottom: 2.25rem;
+/* ── CENTER-LINE ZIGZAG TIMELINE ── */
+.journey-timeline{
+  max-width:1000px;margin:0 auto;
+  padding:var(--s-5) var(--layout-gutter) var(--s-9);
+  position:relative;
 }
-.about-name em{
-  font-style: normal;
-  color: var(--grape);
+/* static rail replaced by .tl-track div (height set by JS to end at last node) */
+.journey-timeline::before{display:none;}
+.tl-track{
+  position:absolute;
+  left:50%;transform:translateX(-50%);
+  top:0;width:2px;height:0;
+  background:rgba(110,35,72,.14);
+  z-index:1;
+  pointer-events:none;
 }
-
-.about-bio{
-  font-size: 1rem;
-  font-weight: 300;
-  line-height: 1.85;
-  color: var(--plum);
-  opacity: 0.72;
-  margin-bottom: 1.1rem;
-  max-width: 520px;
+@media(max-width:768px){.tl-track{left:20px;transform:none;}}
+/* filled line — JS drives height based on scroll */
+.tl-fill{
+  position:absolute;
+  left:50%;transform:translateX(-50%);
+  top:0;width:2px;height:0;
+  background:var(--c-berry-500);
+  z-index:2;
+  pointer-events:none;
 }
-.about-bio strong{color:var(--plum);opacity:1;font-weight:500;}
-
-.about-photo-wrap{
-  position: sticky;
-  top: 6rem;
-}
-.about-photo{
-  width: 100%;
-  aspect-ratio: 3/4;
-  object-fit: cover;
-  object-position: center top;
-  border-radius: 3px;
-  display: block;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1s ease, transform 1s cubic-bezier(0.16,1,0.3,1);
-}
-.about-photo.revealed{opacity:1;transform:translateY(0)}
-.about-photo-caption{
-  font-size: 0.68rem;
-  color: var(--rose);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-top: 0.85rem;
-  opacity: 0.7;
+@media(max-width:768px){
+  .journey-timeline::before{left:20px;transform:none;}
+  .tl-fill{left:20px;transform:none;}
 }
 
-.about-details{
-  max-width: 1160px;
-  margin: 0 auto;
-  padding: 4.5rem 3.5rem 8rem;
+/* ── JOURNEY ENTRY ── */
+.je{
+  display:grid;
+  grid-template-columns:1fr 64px 1fr;
+  gap:0 var(--s-6);
+  align-items:start;
+  margin-bottom:var(--s-8);
+  opacity:0;transform:translateY(18px);
+  transition:opacity .55s var(--ease-soft),transform .55s var(--ease-soft);
+}
+.je.revealed{opacity:1;transform:translateY(0);}
+
+/* text column — right-aligned on left, left-aligned on right */
+.je-text{grid-column:1;text-align:right;}
+.je.even .je-text{grid-column:3;grid-row:1;text-align:left;}
+
+/* center column with dot */
+.je-center{
+  grid-column:2;grid-row:1;
+  display:flex;align-items:flex-start;
+  justify-content:center;
+  padding-top:6px;
+  position:relative;
+  z-index:1;
+}
+/* horizontal connector arms */
+.je-center::before,.je-center::after{
+  content:'';position:absolute;
+  top:15px;height:1px;
+  width:var(--s-6);background:var(--border-subtle);
+}
+.je-center::before{right:100%;}
+.je-center::after{left:100%;}
+
+/* photo column */
+.je-photo{grid-column:3;grid-row:1;}
+.je.even .je-photo{grid-column:1;grid-row:1;}
+
+/* ── DOT ── */
+.je-dot{
+  width:20px;height:20px;border-radius:50%;
+  background:var(--c-berry-500);
+  border:3px solid var(--c-cream-100);
+  box-shadow:0 0 0 2.5px var(--c-berry-500);
+  flex-shrink:0;
+  transform:scale(0);
+  transition:transform .45s var(--ease-spring) .1s;
+}
+.je.revealed .je-dot{transform:scale(1);}
+.je-dot.pink{
+  background:var(--c-pink-500);
+  box-shadow:0 0 0 2.5px var(--c-pink-500);
 }
 
-.detail-row{
-  display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 3rem;
-  padding: 2rem 0;
-  border-bottom: 1px solid var(--petal);
-  align-items: start;
+/* ── TEXT CONTENT ── */
+.je-year{
+  font-family:var(--ff-mono);font-size:var(--fs-xs);font-weight:500;
+  letter-spacing:var(--tr-mono);text-transform:uppercase;
+  color:var(--text-secondary);margin-bottom:var(--s-2);
+  display:block;
 }
-.detail-label{
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--rose);
-  padding-top: 0.1rem;
+.je-tag{
+  display:inline-block;
+  font-family:var(--ff-mono);font-size:.6rem;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase;
+  padding:.22rem .55rem;border-radius:var(--r-pill);
+  margin-bottom:var(--s-3);
 }
-.detail-text{
-  font-size: 0.92rem;
-  font-weight: 300;
-  line-height: 1.8;
-  color: var(--plum);
-  opacity: 0.68;
-}
-.detail-links{list-style:none;}
-.detail-links a{
-  font-size: 0.92rem;
-  font-weight: 400;
-  color: var(--plum);
-  text-decoration: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.45rem 0;
-  border-bottom: 1px solid var(--petal);
-  opacity: 0.6;
-  transition: opacity 0.2s;
-}
-.detail-links a:last-child{border-bottom:none}
-.detail-links a:hover{opacity:1}
+.je-tag.berry{border:1px solid var(--c-berry-500);color:var(--text-label);background:transparent;}
+.je-tag.pink{border:1px solid var(--c-pink-500);color:var(--c-pink-500);background:var(--surface-tint);}
 
-footer{
-  background: var(--plum);
-  padding: 5rem 3.5rem 3rem;
+.je-title{
+  font-family:var(--ff-display);font-optical-sizing:auto;
+  font-size:var(--fs-xl);font-weight:700;
+  letter-spacing:-.02em;line-height:1.1;
+  color:var(--text-primary);margin-bottom:var(--s-3);
 }
-.footer-inner{max-width:1160px;margin:0 auto}
-.footer-h{
-  font-family: var(--man);
-  font-size: clamp(2.5rem,6vw,5.5rem);
-  font-weight: 700; letter-spacing: -0.04em; line-height: 1;
-  color: var(--ivory); margin-bottom: 1.25rem;
+.je-body{
+  font-size:var(--fs-sm);line-height:var(--lh-loose);
+  color:var(--text-secondary);
 }
-.footer-h em{font-style:normal;color:rgba(155,127,160,0.9);}
-.footer-sub{font-size:0.88rem;color:rgba(200,152,152,0.6);margin-bottom:2.5rem}
-.footer-btn{
-  display:inline-flex;align-items:center;gap:0.5rem;
-  background:rgba(246,241,234,0.08);
-  border:1px solid rgba(234,216,210,0.18);
-  color:var(--ivory);
-  font-family:var(--man);font-size:0.82rem;font-weight:600;
-  letter-spacing:0.04em;padding:0.8rem 1.6rem;
-  border-radius:999px;text-decoration:none;transition:background 0.2s,border-color 0.2s;
-}
-.footer-btn:hover{background:rgba(246,241,234,0.15);border-color:rgba(234,216,210,0.35);}
-.footer-bottom{
-  display:flex;justify-content:space-between;align-items:center;
-  margin-top:5rem;padding-top:1.5rem;
-  border-top:1px solid rgba(234,216,210,0.1);
-}
-.footer-copy{font-size:0.72rem;color:rgba(200,152,152,0.4)}
-.footer-nav{display:flex;gap:2rem;list-style:none}
-.footer-nav a{font-size:0.72rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:rgba(200,152,152,0.4);text-decoration:none;transition:color 0.2s;}
-.footer-nav a:hover{color:var(--ivory)}
+/* right-aligned text entries: keep left-align for readability of paragraphs */
+.je-text{text-align:right;}
+.je-text .je-body{text-align:right;}
+.je.even .je-text{text-align:left;}
+.je.even .je-text .je-body{text-align:left;}
 
-@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-.u{opacity:0;animation:up 0.65s ease forwards}
-.d1{animation-delay:0.05s}
-.d2{animation-delay:0.15s}
-.d3{animation-delay:0.28s}
-.d4{animation-delay:0.42s}
+/* ── PHOTO SLOT ── */
+.je-photo-slot{
+  aspect-ratio:4/3;
+  border-radius:var(--r-lg);
+  border:1.5px solid rgba(34,27,22,.15);
+  background:var(--surface-raised);
+  overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+/* when a real image is added, fill the slot */
+.je-photo-slot img{
+  width:100%;height:100%;
+  object-fit:cover;display:block;
+}
+.je-photo-slot.portrait{aspect-ratio:3/4;}
+.je-photo-slot .slot-label{
+  font-family:var(--ff-mono);font-size:var(--fs-xs);
+  letter-spacing:var(--tr-mono);text-transform:uppercase;
+  color:rgba(34,27,22,.25);
+  pointer-events:none;
+}
+/* hide label when image present */
+.je-photo-slot:has(img[src]:not([src=""])) .slot-label{display:none;}
 
-@media(max-width:860px){
-  nav{padding:1.2rem 1.5rem}
-  .about-hero{padding:8rem 1.5rem 0}
-  .about-grid{grid-template-columns:1fr;gap:3rem}
-  .about-photo-wrap{position:static;order:-1}
-  .about-photo{aspect-ratio:4/3;max-height:400px}
-  .about-details{padding:3rem 1.5rem 5rem}
-  .detail-row{grid-template-columns:1fr;gap:0.4rem}
-  footer{padding:3.5rem 1.5rem 2.5rem}
+/* ── BROOKLYN LIFE BADGES ── */
+.je-badges{
+  display:flex;flex-wrap:wrap;gap:var(--s-2);
+  margin-top:var(--s-4);
+  justify-content:flex-end; /* right-aligned for left-side text */
+}
+.je.even .je-badges{justify-content:flex-start;}
+.jbadge{
+  font-family:var(--ff-mono);font-size:.62rem;font-weight:500;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:var(--s-2) var(--s-3);border-radius:var(--r-pill);
+  border:1.5px solid var(--border-strong);
+  background:var(--surface-card);
+  white-space:nowrap;
+}
+.jbadge.pink{background:var(--c-pink-100);}
+.jbadge.butter{background:var(--c-butter-100,#FDF5D5);}
+.jbadge.sage{background:rgba(183,203,168,.45);}
+.jbadge.berry-soft{background:rgba(110,35,72,.1);}
+
+/* ── FIND ME ── */
+.je-caption{
+  font-family:var(--ff-script);font-size:1.1rem;font-weight:600;
+  color:var(--text-handwritten);display:inline-block;
+  margin-top:var(--s-2);transform:rotate(-1.5deg);
+}
+.contact-section{
+  max-width:var(--layout-max);margin:0 auto;
+  padding:var(--s-9) var(--layout-gutter);
+  border-top:1px solid var(--border-subtle);
+}
+.contact-intro{
+  font-family:var(--ff-display);font-optical-sizing:auto;
+  font-size:clamp(1rem,2.6vw,2.1rem);font-weight:700;
+  letter-spacing:var(--tr-display);line-height:1.1;
+  color:var(--c-berry-500);margin-bottom:var(--s-7);
+  white-space:nowrap;max-width:none;
+}
+.contact-btns{display:flex;gap:var(--s-3);flex-wrap:wrap;}
+.cbtn{
+  display:inline-flex;align-items:center;
+  font-family:var(--ff-body);font-size:var(--fs-sm);font-weight:700;
+  letter-spacing:.02em;
+  padding:var(--s-3) var(--s-6);
+  border-radius:var(--r-pill);border:2px solid var(--border-strong);
+  background:transparent;color:var(--text-primary);
+  text-decoration:none;
+  transition:transform var(--dur-fast),box-shadow var(--dur-fast),background var(--dur-fast),color var(--dur-fast);
+}
+.cbtn:hover{
+  transform:translateY(-2px);
+  box-shadow:var(--shadow-btn-hover);
+}
+/* minimal page footer */
+.page-footer{border-top:1px solid var(--border-subtle);padding:var(--s-5) var(--layout-gutter);}
+.page-footer-inner{max-width:var(--layout-max);margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
+.pfooter-copy{font-family:var(--ff-mono);font-size:var(--fs-xs);letter-spacing:.06em;color:var(--text-secondary);}
+.pfooter-nav{display:flex;gap:var(--s-6);list-style:none;}
+.pfooter-nav a{font-family:var(--ff-mono);font-size:var(--fs-xs);font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-secondary);text-decoration:none;transition:color var(--dur-fast);}
+.pfooter-nav a:hover{color:var(--text-primary);}
+
+/* ── FOOTER ── */
+.footer-wrap{background:var(--c-cream-100);width:100%;border-top:1px solid var(--border-subtle);}
+footer{max-width:var(--layout-max);margin:0 auto;padding:var(--s-9) var(--layout-gutter) var(--s-7);}
+.footer-h{font-family:var(--ff-display);font-optical-sizing:auto;font-size:var(--fs-2xl);font-weight:900;letter-spacing:var(--tr-display);line-height:.98;color:var(--c-berry-500);margin-bottom:var(--s-5);}
+.footer-h .accent{color:var(--text-display-accent);}
+.footer-btn{display:inline-flex;align-items:center;gap:var(--s-2);background:var(--action-primary-bg);color:var(--action-primary-text);font-family:var(--ff-body);font-size:.84rem;font-weight:700;letter-spacing:.02em;padding:var(--s-3) var(--s-6);border-radius:var(--r-pill);border:2px solid var(--action-primary-border);text-decoration:none;transition:transform var(--dur-fast),box-shadow var(--dur-fast);}
+.footer-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-btn-hover);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:var(--s-9);padding-top:var(--s-5);border-top:1px solid var(--border-subtle);}
+.footer-copy{font-family:var(--ff-mono);font-size:var(--fs-xs);letter-spacing:.06em;color:var(--text-secondary);}
+.footer-nav{display:flex;gap:var(--s-6);list-style:none;}
+.footer-nav a{font-family:var(--ff-mono);font-size:var(--fs-xs);font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-secondary);text-decoration:none;transition:color var(--dur-fast);}
+.footer-nav a:hover{color:var(--text-primary);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  nav{left:var(--s-3);right:var(--s-3);top:var(--s-3);}
+  /* collapse to left-anchored single column */
+  .journey-timeline::before{left:20px;transform:none;}
+  .je{
+    display:block;
+    padding-left:52px;
+    position:relative;
+    margin-bottom:var(--s-7);
+  }
+  .je-center{
+    position:absolute;left:0;top:4px;
+    display:block;
+    width:40px;
+  }
+  .je-center::before,.je-center::after{display:none;}
+  .je-photo{margin-bottom:var(--s-5);}
+  .je-text,.je.even .je-text{text-align:left;}
+  .je-text .je-body,.je.even .je-text .je-body{text-align:left;}
+  .je-badges,.je.even .je-badges{justify-content:flex-start;}
+  .contact-inner{grid-template-columns:1fr;gap:var(--s-3);}
+  footer{padding-left:var(--s-5);padding-right:var(--s-5);}
+  .journey-header,.contact-section{padding-left:var(--s-5);padding-right:var(--s-5);}
 }
 </style>
+<link rel="stylesheet" href="tokens.css">
 </head>
 <body>
 
-<nav>
-  <a class="nav-logo" href="index.html">Cameron Womack</a>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav id="site-nav">
+  <a href="index.html" class="nav-logo">Cameron Womack</a>
   <ul class="nav-links">
     <li><a href="index.html#work">Work</a></li>
-    <li><a href="about.html" class="active">About</a></li>
-    <li><a href="cameron-womack-resume.pdf" target="_blank">Resume ↗</a></li>
+    <li><a href="about.html" class="active" aria-current="page">About</a></li>
+    <li><a href="cameron-womack-resume.pdf" target="_blank" rel="noopener">Resume ↗</a></li>
   </ul>
 </nav>
 
-<section class="about-hero">
-  <div class="about-grid">
-    <div>
-      <h1 class="u d2 about-name">Hi, I'm<br><em>Cameron!</em></h1>
-      <p class="u d3 about-bio">I'm a designer based in Brooklyn who's energized by complex, ambiguous problem spaces where design thinking can unblock a team and move a product forward. I got my start in CS before finding my way to design through an NYU program in Integrated Digital Media, and that mix has shaped how I work: I'm as comfortable in a research session or a product strategy conversation as I am thinking through a technical constraint.</p>
-      <p class="u d4 about-bio">Most of my recent work has been in enterprise software, but what pulls me in isn't the industry, it's the problems. I like work where research, product thinking, and craft have to come together to create real clarity for users. If you're looking for a designer who brings that same rigor and curiosity to every stage of the process, I'd love to talk.</p>
-    </div>
+<main id="main">
 
-    <div class="about-photo-wrap">
-      <img
-        class="about-photo"
-        src="About_Me_Image.JPG"
-        alt="Cameron Womack at graduation by the Manhattan Bridge, Brooklyn"
-      />
-      <p class="about-photo-caption">Brooklyn, NY</p>
-    </div>
-  </div>
-</section>
+  <!-- ── PAGE HEADER ── -->
+  <header class="journey-header">
+    <h1 class="journey-title">My Journey So Far</h1>
+  </header>
 
-<section class="about-details">
-  <div class="detail-row">
-    <span class="detail-label">Education</span>
-    <p class="detail-text">CS from Spelman College, MS in Integrated Digital Media from NYU. I started out thinking I'd be a software engineer, and then several SWE internships at Google showed me that design was where I actually wanted to live.</p>
-  </div>
-  <div class="detail-row">
-    <span class="detail-label">Outside of work</span>
-    <p class="detail-text">Solo movie trips, book club, beginner wheel throwing, long neighborhood walks, and trying to become a certified Yelp reviewer before 2027.</p>
-  </div>
-  <div class="detail-row">
-    <span class="detail-label">Find me</span>
-    <ul class="detail-links">
-      <li><a href="https://www.linkedin.com/in/cameron-womack-b0481a128/" target="_blank">LinkedIn <span>↗</span></a></li>
-      <li><a href="cameron-womack-resume.pdf" target="_blank">Resume <span>↗</span></a></li>
+  <!-- ── TIMELINE ── -->
+  <section class="journey-timeline" aria-label="Career timeline">
+    <div class="tl-track" aria-hidden="true"></div>
+    <div class="tl-fill" aria-hidden="true"></div>
+
+    <!-- ①  SPELMAN  |  text right ← dot ← photo  -->
+    <article class="je odd" aria-labelledby="je1-title">
+      <div class="je-text">
+        <span class="je-year">2016–2020</span>
+        <span class="je-tag berry">Education</span>
+        <h2 class="je-title" id="je1-title">Studied Computer Science at Spelman</h2>
+        <p class="je-body">I majored in Computer Science at Spelman, and had amazing opportunities to intern as a software engineer at Google on Maps, Hangouts, and Chrome.</p>
+      </div>
+      <div class="je-center" aria-hidden="true">
+        <div class="je-dot berry"></div>
+      </div>
+
+    </article>
+
+    <!-- ②  NYU  |  photo → dot → text  -->
+    <article class="je even" aria-labelledby="je2-title">
+      <div class="je-text">
+        <span class="je-year">2020–2022</span>
+        <span class="je-tag berry">The pivot</span>
+        <h2 class="je-title" id="je2-title">MS in Integrated Digital Media at NYU</h2>
+        <p class="je-body">During my internships, I learned that I wanted to make the transition from SWE to Product Design. Through the awesome classes I was able to take at NYU (including Virtual Reality Design, Audio Engineering, and more!) I was able to explore how to use my experience in engineering and my excitement about creating awesome digital experiences into a career in UX!</p>
+      </div>
+      <div class="je-center" aria-hidden="true">
+        <div class="je-dot berry"></div>
+      </div>
+      <div class="je-photo">
+        <div class="je-photo-slot portrait">
+          <img src="About_Me_Image.JPG" alt="Cameron Womack at graduation, Manhattan Bridge, Brooklyn" style="object-position:top center;">
+        </div>
+        <p class="je-caption">Graduation pictures by the Brooklyn bridge!</p>
+      </div>
+    </article>
+
+    <!-- ③  MOODY'S  |  text ← dot ← photo  -->
+    <article class="je odd" aria-labelledby="je3-title">
+      <div class="je-text">
+        <span class="je-year">2022–Now</span>
+        <span class="je-tag berry">Current</span>
+        <h2 class="je-title" id="je3-title">Senior Experience Designer at Moody's Analytics</h2>
+        <p class="je-body">Leading the end-to-end design for digital tools that transition analyst workflows entirely out of Excel. Leading research initiatives, implementing AI-assisted design practices, and working through ambiguity to deliver experiences that create real business impact.</p>
+      </div>
+      <div class="je-center" aria-hidden="true">
+        <div class="je-dot"></div>
+      </div>
+
+    </article>
+
+    <!-- ④  BROOKLYN LIFE  |  photo → dot → text  -->
+    <article class="je even" aria-labelledby="je4-title">
+      <div class="je-text">
+        <span class="je-year">Ongoing</span>
+        <span class="je-tag berry">Beyond the work</span>
+        <h2 class="je-title" id="je4-title">Life in Brooklyn</h2>
+        <p class="je-body">Outside of work, I try to make the most of all of the amazing opportunities to grow and get connected in my neighborhood! Here are some of the experiences I've had this year so far :)</p>
+        <div class="je-badges" role="list">
+          <span class="jbadge pink" role="listitem">Wheel throwing</span>
+          <span class="jbadge butter" role="listitem">Piano classes</span>
+          <span class="jbadge sage" role="listitem">Big Brother Big Sisters of NYC</span>
+          <span class="jbadge berry-soft" role="listitem">Yelp certified!</span>
+        </div>
+      </div>
+      <div class="je-center" aria-hidden="true">
+        <div class="je-dot"></div>
+      </div>
+      <div class="je-photo">
+        <div class="je-photo-slot">
+          <img src="Brooklyn.png" alt="Friends celebrating in Brooklyn at night">
+        </div>
+        <p class="je-caption">Exploring New York restaurants with friends :)</p>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- ── FIND ME ── -->
+  <section class="contact-section" aria-labelledby="contact-heading">
+    <p class="contact-intro" id="contact-heading">Still have more questions about me? Here&#8217;s how you can find out more.</p>
+    <div class="contact-btns">
+      <a class="cbtn" href="https://www.linkedin.com/in/cameron-womack-b0481a128/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="cbtn" href="cameron-womack-resume.pdf" target="_blank" rel="noopener">Resume</a>
+      <a class="cbtn" href="mailto:cameron.e.womack@gmail.com">Say hello</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span class="pfooter-copy">© 2026 Cameron Womack</span>
+    <ul class="pfooter-nav">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="cameron-womack-resume.pdf" target="_blank" rel="noopener">Resume</a></li>
     </ul>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-inner">
-    <h2 class="footer-h">Let's make<br>something <em>good.</em></h2>
-    <a href="mailto:cameron.e.womack@gmail.com" class="footer-btn">
-      Say hello
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1.5 10.5L10.5 1.5M10.5 1.5H4.5M10.5 1.5V7.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-    </a>
-    <div class="footer-bottom">
-      <span class="footer-copy">© 2025 Cameron Womack</span>
-      <ul class="footer-nav">
-        <li><a href="index.html#work">Work</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="cameron-womack-resume.pdf" target="_blank">Resume</a></li>
-      </ul>
-    </div>
   </div>
 </footer>
 
 <script>
-const photo = document.querySelector('.about-photo');
-if (photo) {
-  // Try to trigger immediately if already in view, else observe
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('revealed');
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.05, rootMargin: '0px 0px -50px 0px' });
-  obs.observe(photo);
-  // Fallback — show after 600ms regardless
-  setTimeout(() => photo.classList.add('revealed'), 600);
+var REDUCE = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+var MOBILE = function(){ return window.innerWidth < 768; };
+
+/* NAV */
+var navEl = document.getElementById('site-nav');
+window.addEventListener('scroll', function(){
+  navEl.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive:true });
+
+/* SCROLL-DRIVEN TIMELINE */
+var tl      = document.querySelector('.journey-timeline');
+var fill    = document.querySelector('.tl-fill');
+var track   = document.querySelector('.tl-track');
+var entries = Array.from(document.querySelectorAll('.je'));
+
+/* Y position of last dot center, relative to timeline container */
+function getMaxH(){
+  if(!entries.length || !tl) return 0;
+  var last = entries[entries.length - 1];
+  var dot  = last.querySelector('.je-dot');
+  if(!dot) return tl.offsetHeight;
+  var dr = dot.getBoundingClientRect();
+  var tr = tl.getBoundingClientRect();
+  return dr.top - tr.top + dr.height * 0.5;
+}
+
+function showAll(){
+  var maxH = getMaxH();
+  if(fill)  fill.style.height  = maxH + 'px';
+  if(track) track.style.height = maxH + 'px';
+  entries.forEach(function(e){ e.classList.add('revealed'); });
+}
+
+function updateTimeline(){
+  if(!tl || !fill) return;
+  var maxH    = getMaxH();
+  var trigger = window.innerHeight * 0.68;
+  var scrolled = trigger - tl.getBoundingClientRect().top;
+  var fillH   = Math.max(0, Math.min(maxH, scrolled));
+
+  fill.style.height  = fillH + 'px';
+  if(track) track.style.height = maxH + 'px'; /* track always ends at last node */
+
+  entries.forEach(function(entry){
+    var dot = entry.querySelector('.je-dot');
+    if(!dot) return;
+    var dr = dot.getBoundingClientRect();
+    var tr = tl.getBoundingClientRect();
+    var dotY = dr.top - tr.top + dr.height * 0.5;
+    if(fillH >= dotY){
+      entry.classList.add('revealed');
+    } else {
+      entry.classList.remove('revealed');
+    }
+  });
+}
+
+if(REDUCE || MOBILE()){
+  showAll();
+} else {
+  window.addEventListener('scroll', updateTimeline, { passive:true });
+  window.addEventListener('resize', function(){
+    if(MOBILE()) showAll(); else updateTimeline();
+  });
+  updateTimeline();
 }
 </script>
 </body>
