@@ -207,8 +207,9 @@ button.hw::after{
 .project-card:hover,.project-card:focus-visible{transform:translateY(-5px);box-shadow:var(--shadow-card-hover);}
 .project-card:focus-visible{outline:var(--focus-width) solid var(--focus-ring);outline-offset:4px;}
 .card-visual{height:240px;position:relative;overflow:hidden;flex-shrink:0;background:var(--c-ink-900);border-bottom:1.5px solid var(--border-strong);}
-.card-visual img{width:100%;height:100%;display:block;object-fit:cover;object-position:top center;filter:grayscale(100%) contrast(.9) brightness(1.05);transition:filter .5s ease;}
-.project-card:hover .card-visual img,.project-card:focus-visible .card-visual img{filter:grayscale(0%) contrast(1) brightness(1);}
+.card-visual img{width:100%;height:100%;display:block;object-fit:cover;object-position:top center;}
+/* research & design: right-align so the feature-improvement element stays in frame */
+.cards-grid .project-card:nth-child(2) .card-visual img{object-position:right center;}
 .card-body{padding:var(--s-5);}
 .card-tag{font-family:var(--ff-mono);font-size:.66rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-label);margin-bottom:var(--s-2);}
 .card-titlewrap{display:flex;align-items:center;gap:var(--s-2);flex-wrap:wrap;margin-bottom:var(--s-2);}
