@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cameron Womack — Senior Experience Designer</title>
+<title>Experiments — Cameron Womack</title>
 <meta name="description" content="Senior Experience Designer specializing in complex workflows, data-heavy interfaces, and AI-assisted design.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -238,6 +238,33 @@ footer{max-width:var(--layout-max);margin:0 auto;padding:var(--s-9) var(--layout
   .nav-links{gap:var(--s-4);}
   .hero{padding-left:var(--s-5);padding-right:var(--s-5);}
 }
+
+/* ===== EXPERIMENTS ===== */
+.cards-grid .project-card{opacity:1;animation:none;}
+.xp-header{max-width:var(--layout-max);margin:0 auto;padding:calc(var(--s-9) + var(--s-5)) var(--layout-gutter) var(--s-6);}
+.xp-eyebrow,.xpd-eyebrow{font-family:var(--ff-mono);font-size:var(--fs-xs);letter-spacing:var(--tr-mono);text-transform:uppercase;color:var(--text-label);font-weight:500;margin-bottom:var(--s-4);}
+.xp-title,.xpd-title{font-family:var(--ff-display);font-optical-sizing:auto;font-weight:900;font-size:var(--fs-3xl);letter-spacing:var(--tr-display);line-height:.98;color:var(--c-berry-500);margin-bottom:var(--s-5);}
+.xp-intro{max-width:64ch;font-size:1.3rem;line-height:1.6;color:var(--text-secondary);}
+.xp-grid-section{max-width:var(--layout-max);margin:0 auto;padding:var(--s-5) var(--layout-gutter) var(--s-10);}
+.xp-grid-section .section-header{margin-bottom:var(--s-6);}
+.card-visual--boox{display:flex;align-items:center;justify-content:center;background:radial-gradient(130% 150% at 28% 18%, #4A1530 0%, #221B16 72%);}
+.boox-wordmark{font-family:var(--ff-display);font-weight:900;font-size:3.4rem;letter-spacing:-.03em;color:var(--c-cream-100);opacity:.97;}
+/* ===== EXPERIMENT DETAIL ===== */
+.xp-detail{max-width:var(--layout-max);margin:0 auto;padding:calc(var(--s-10) + var(--s-6)) var(--layout-gutter) var(--s-8);}
+.xpd-hero{max-width:64ch;margin-bottom:var(--s-7);}
+.xpd-desc{font-size:1.2rem;line-height:1.7;color:var(--text-secondary);margin-bottom:var(--s-5);}
+.xpd-skip{display:inline-block;font-family:var(--ff-mono);font-size:var(--fs-sm);letter-spacing:.05em;color:var(--text-secondary);text-decoration:none;border-bottom:1px solid var(--border-subtle);padding-bottom:2px;transition:color var(--dur-fast),border-color var(--dur-fast);}
+.xpd-skip:hover{color:var(--c-berry-500);border-color:var(--c-berry-500);}
+.xpd-app{scroll-margin-top:90px;margin:var(--s-6) 0 var(--s-7);}
+.app-frame{border-radius:var(--r-lg);overflow:hidden;border:1.5px solid var(--border-strong);box-shadow:0 24px 60px rgba(34,27,22,.16);background:var(--c-ink-900);}
+.app-chrome{display:flex;align-items:center;justify-content:space-between;gap:var(--s-4);padding:var(--s-3) var(--s-5);background:var(--c-berry-500);}
+.app-chrome-label{font-family:var(--ff-mono);font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,240,234,.92);}
+.app-chrome-tag{font-family:var(--ff-mono);font-size:.62rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,240,234,.55);white-space:nowrap;}
+.app-iframe{width:100%;height:760px;border:none;display:block;background:var(--c-white);}
+.app-cap{font-family:var(--ff-body);font-size:.8rem;font-weight:500;color:#6E2348;text-align:center;margin-top:var(--s-4);}
+.xpd-back{display:inline-block;margin-top:var(--s-2);font-family:var(--ff-body);font-weight:700;font-size:.85rem;color:var(--c-berry-500);text-decoration:none;}
+.xpd-back:hover{text-decoration:underline;}
+@media(max-width:768px){.app-iframe{height:600px;}.app-chrome-tag{display:none;}}
 </style>
 <link rel="stylesheet" href="tokens.css">
 </head>
@@ -246,10 +273,10 @@ footer{max-width:var(--layout-max);margin:0 auto;padding:var(--s-9) var(--layout
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav id="site-nav">
-  <a href="#" class="nav-logo">Cameron Womack</a>
+  <a href="index.html" class="nav-logo">Cameron Womack</a>
   <ul class="nav-links">
-    <li><a href="#work">Work</a></li>
-    <li><a href="experiments.html">Experiments</a></li>
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="experiments.html" aria-current="page">Experiments</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="cameron-womack-resume.pdf" target="_blank" rel="noopener">Resume ↗</a></li>
   </ul>
@@ -258,89 +285,31 @@ footer{max-width:var(--layout-max);margin:0 auto;padding:var(--s-9) var(--layout
 <main id="main">
 
   <!-- ── HERO ── -->
-  <section class="hero" id="hero" aria-labelledby="hero-heading">
+  <header class="xp-header" id="main">
+    <p class="xp-intro">As a tech-native, I'm naturally curious about the new AI tools that are coming out every day, and what they can do. To find out for myself, I'm spending time outside of work building things with Claude. Follow along on my journey by taking a look at the things I'm building below!</p>
+  </header>
 
-    <p class="hero-eyebrow" aria-hidden="false">
-      Senior Experience Designer · Brooklyn, NY
-    </p>
-
-    <h1 class="hero-h1" id="hero-heading">
-      <span class="hw" style="--di:0">Design&nbsp;</span><span
-           class="hw" style="--di:1">that&nbsp;</span><span
-           class="hw" style="--di:2">makes</span><br><span
-           class="hw" style="--di:3">hard&nbsp;</span><span
-           class="hw" style="--di:4">things&nbsp;</span><button
-           class="hw" style="--di:5"
-           type="button"
-           aria-label="Click for a surprise"
-           id="click-word">click.</button>
-    </h1>
-
-    <a href="#work" class="hero-cta">
-      See the work
-      <span class="cta-arrow" aria-hidden="true">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-          <path d="M7 1v12M1 7l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </span>
-    </a>
-
-  </section>
-
-    <!-- ── WORK ── -->
-  <section class="work" id="work" aria-labelledby="work-heading">
+  <section class="xp-grid-section" aria-labelledby="xp-grid-heading">
     <div class="section-header">
-      <h2 class="section-label" id="work-heading">Selected work</h2>
+      <h2 class="section-label" id="xp-grid-heading">The experiments</h2>
     </div>
     <div class="cards-grid">
-
-      <a class="project-card" href="designing-with-ai.html">
-        <div class="card-visual">
-          <img src="DesigningWithAIScreenshot_html.jpg" alt="Designing with AI — brand identity system for Alterna">
+      <a class="project-card" href="boox.html">
+        <div class="card-visual card-visual--boox" aria-hidden="true">
+          <span class="boox-wordmark">Boox</span>
         </div>
         <div class="card-body">
-          <div class="card-tag">01 / Designing with AI</div>
+          <div class="card-tag">Experiment 01</div>
           <div class="card-titlewrap">
-            <h3 class="card-title">Co-designing a taste-matching AI at Alterna</h3>
-            <span class="card-pill">Ongoing</span>
+            <h3 class="card-title">Boox</h3>
           </div>
-          <p class="card-desc">Brand identity system for an AI-native interior design startup</p>
+          <p class="card-desc">As an avid reader, I wanted to build an engine that would take in my reading history (my likes, my dislikes, and thoughts about what I might like to read) and give me recommendations about what to read next.</p>
         </div>
       </a>
-
-      <a class="project-card" href="research-and-design.html">
-        <div class="card-visual">
-          <img src="research-and-design-hero.jpg" alt="Research and Design — enterprise UX for Moody's Analytics">
-        </div>
-        <div class="card-body">
-          <div class="card-tag">02 / Research &amp; Design</div>
-          <div class="card-titlewrap">
-            <h3 class="card-title">End-to-end UX for enterprise data tools</h3>
-          </div>
-          <p class="card-desc">Untangling complexity for analysts who can't afford to be confused</p>
-        </div>
-      </a>
-
-      <a class="project-card" href="design-strategy.html">
-        <div class="card-visual">
-          <img src="design-strategy-hero.jpg" alt="Design Strategy — 0 to 1 private credit monitoring platform">
-        </div>
-        <div class="card-body">
-          <div class="card-tag">03 / Design Strategy</div>
-          <div class="card-titlewrap">
-            <h3 class="card-title">0→1 private credit monitoring platform</h3>
-          </div>
-          <p class="card-desc">Product definition through delivery</p>
-        </div>
-      </a>
-
     </div>
   </section>
 
-</main>
-
-<!-- Footer sits on cream, always — provides visual floor against pink body -->
-<div class="footer-wrap">
+  <div class="footer-wrap">
   <footer id="contact">
     <h2 class="footer-h">Let's make<br>something <span class="accent">good.</span></h2>
     <a href="mailto:cameron.e.womack@gmail.com" class="footer-btn">
@@ -352,7 +321,7 @@ footer{max-width:var(--layout-max);margin:0 auto;padding:var(--s-9) var(--layout
     <div class="footer-bottom">
       <span class="footer-copy">© 2026 Cameron Womack</span>
       <ul class="footer-nav">
-        <li><a href="#work">Work</a></li>
+        <li><a href="index.html#work">Work</a></li>
         <li><a href="experiments.html">Experiments</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="cameron-womack-resume.pdf" target="_blank" rel="noopener">Resume</a></li>
@@ -362,75 +331,8 @@ footer{max-width:var(--layout-max);margin:0 auto;padding:var(--s-9) var(--layout
 </div>
 
 <script>
-var REDUCE_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-/* ── GRID LINES FADE ON SCROLL (background stays cream throughout) ── */
-var hero = document.getElementById('hero');
-function updateGrid() {
-  var heroH = hero.offsetHeight;
-  var p = Math.max(0, Math.min(1, window.scrollY / heroH));
-  document.documentElement.style.setProperty('--grid-alpha', (0.03 * (1 - p)).toFixed(4));
-}
-if (!REDUCE_MOTION) {
-  window.addEventListener('scroll', updateGrid, { passive: true });
-}
-updateGrid();
-
-/* ── NAV shadow on scroll ── */
-var navEl = document.getElementById('site-nav');
-window.addEventListener('scroll', function() {
-  navEl.classList.toggle('scrolled', window.scrollY > 60);
-}, { passive: true });
-
-/* ── CLICK-ACCENT spring ── */
-var clickWord = document.getElementById('click-word');
-if (clickWord) {
-  function press()   { clickWord.classList.remove('released'); clickWord.classList.add('pressed'); }
-  function release() {
-    clickWord.classList.remove('pressed');
-    clickWord.classList.add('released');
-    setTimeout(function(){ clickWord.classList.remove('released'); }, 420);
-  }
-  clickWord.addEventListener('mousedown', press);
-  clickWord.addEventListener('mouseup', release);
-  clickWord.addEventListener('mouseleave', function(){ if (clickWord.classList.contains('pressed')) release(); });
-  clickWord.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); press(); }});
-  clickWord.addEventListener('keyup',   function(e){ if (e.key === 'Enter' || e.key === ' ') release(); });
-  clickWord.addEventListener('touchstart', function(e){ e.preventDefault(); press(); }, { passive: false });
-  clickWord.addEventListener('touchend',   function(e){ e.preventDefault(); release(); }, { passive: false });
-}
-
-
-/* ── SELECTED WORK: deal cards on first click of "click." or on scroll ── */
-(function(){
-  var grid = document.querySelector('.cards-grid');
-  var work = document.getElementById('work');
-  if(!grid) return;
-  var dealt = false;
-  function deal(){
-    if(dealt) return; dealt = true;
-    grid.classList.add('dealt');
-    setTimeout(function(){ grid.classList.add('done'); }, 1300);
-  }
-  // reduced motion: just show them
-  if(REDUCE_MOTION){ grid.classList.add('dealt','done'); dealt = true; }
-  // reveal when scrolled into view (fallback / manual scroll)
-  else if('IntersectionObserver' in window){
-    var obs = new IntersectionObserver(function(es){
-      es.forEach(function(e){ if(e.isIntersecting){ deal(); obs.disconnect(); } });
-    }, { threshold: 0.15 });
-    obs.observe(grid);
-  } else { deal(); }
-  // clicking the hero word summons the work: deal + smooth scroll
-  var cw = document.getElementById('click-word');
-  if(cw && work){
-    cw.addEventListener('click', function(){
-      deal();
-      var y = work.getBoundingClientRect().top + window.scrollY - 90;
-      window.scrollTo({ top: y, behavior: REDUCE_MOTION ? 'auto' : 'smooth' });
-    });
-  }
-})();
+const REDUCE_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+(function(){var n=document.getElementById('site-nav');if(n)window.addEventListener('scroll',function(){n.classList.toggle('scrolled',window.scrollY>60);},{passive:true});})();
 </script>
 </body>
 </html>
