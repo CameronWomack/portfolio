@@ -6,9 +6,9 @@
 <title>Boox</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Mulish:wght@400;600;700;800&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.24.7/babel.min.js"></script>
 <style>
   html,body{margin:0;padding:0;background:#0B0B0F;height:100%;}
   #root{min-height:100%;}
@@ -17,7 +17,7 @@
 </head>
 <body>
 <div id="root"></div>
-<script type="text/babel" data-presets="react">
+<script type="text/plain" id="boox-source">
 const { useState, useEffect, useMemo, useRef } = React;
 
 /* ============================================================== *
@@ -1166,6 +1166,14 @@ function FontInjector() {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Boox />);
+//__BOOX_BOOTSTRAP_MARKER__
+</script>
+<script>
+  var src = document.getElementById('boox-source').textContent;
+  var out = Babel.transform(src, { presets: ['react'] }).code;
+  var s = document.createElement('script');
+  s.text = out;
+  document.body.appendChild(s);
 </script>
 </body>
 </html>
